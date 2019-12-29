@@ -67,9 +67,11 @@ loop:
     ; Call the test result function.
     ;  s1 = test result (pass/fail)
     ;  s2 = test number
+    bz      s18, no_callback
     mov     s2, s19
-    jl      s18, #0
+    jl      s18
 
+no_callback:
     add     s19, s19, #1
     j       pc, #loop@pc
 
