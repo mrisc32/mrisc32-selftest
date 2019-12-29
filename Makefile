@@ -31,6 +31,7 @@ OUT = out
 LIBSELFTEST = $(OUT)/libselftest.a
 
 OBJS = \
+  $(OUT)/selftest.o \
   $(OUT)/test_add.o
 
 .PHONY: all clean
@@ -42,6 +43,9 @@ clean:
 
 $(LIBSELFTEST): $(OBJS)
 	$(AR) $(ARFLAGS) $(LIBSELFTEST) $(OBJS)
+
+$(OUT)/selftest.o: src/selftest.s
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(OUT)/test_add.o: src/test_add.s
 	$(AS) $(ASFLAGS) -o $@ $<
