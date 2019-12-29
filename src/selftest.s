@@ -32,7 +32,8 @@
 ;-----------------------------------------------------------------------------
 
     .p2align 2
-    .global selftest_init
+    .global selftest_run
+    .func   selftest_run
 
 selftest_run:
     add     sp, sp, #-20
@@ -82,6 +83,8 @@ done:
     ldw     s19, sp, #16
     add     sp, sp, #20
     j       lr
+
+    .endfunc
 
 
     .section .rodata
