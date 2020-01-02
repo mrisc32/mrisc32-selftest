@@ -98,6 +98,7 @@ done:
 tests:
     .word   test_cpuid
     .word   test_or
+    .word   test_nor
     .word   test_add
     .word   test_sub
     .word   0
