@@ -25,12 +25,12 @@
 
     BEGIN_TEST  test_add
 
-    ; Register operands.
+    ; Immediate operand.
     ldi     s9, #123456
     add     s10, s9, #42
     CHECKEQ s10, 123498
 
-    ; Immediate operand.
+    ; Register operands.
     ldi     s9, #123456
     ldi     s10, #-9456
     add     s11, s9, s10
