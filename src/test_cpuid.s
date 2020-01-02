@@ -101,10 +101,10 @@
     CHECKEQ s11, 0
 
     add     s10, s10, #1
-    slt     s11, s10, #236
+    sle     s11, s10, #17
     bs      s11, 2b
     add     s9, s9, #1
-    slt     s11, s9, #599
+    sle     s11, s9, #33
     bs      s11, 1b
 
     END_TEST
