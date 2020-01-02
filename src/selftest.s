@@ -97,5 +97,6 @@ done:
 
 tests:
     .word   test_add
+    .word   test_sub
     .word   0
 
