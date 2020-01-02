@@ -99,6 +99,7 @@ tests:
     .word   test_cpuid
     .word   test_or
     .word   test_nor
+    .word   test_and
     .word   test_add
     .word   test_sub
     .word   0
