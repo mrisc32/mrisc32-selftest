@@ -32,8 +32,9 @@ LIBSELFTEST = $(OUT)/libselftest.a
 
 OBJS = \
   $(OUT)/selftest.o \
-  $(OUT)/test_add.o \
   $(OUT)/test_cpuid.o \
+  $(OUT)/test_or.o \
+  $(OUT)/test_add.o \
   $(OUT)/test_sub.o
 
 .PHONY: all clean
