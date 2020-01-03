@@ -105,5 +105,6 @@ tests:
     .word   test_add
     .word   test_sub
     .word   test_seq
+    .word   test_sne
     .word   0
 
