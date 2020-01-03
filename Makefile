@@ -41,7 +41,8 @@ OBJS = \
   $(OUT)/test_add.o \
   $(OUT)/test_sub.o \
   $(OUT)/test_seq.o \
-  $(OUT)/test_sne.o
+  $(OUT)/test_sne.o \
+  $(OUT)/test_slt.o
 
 .PHONY: all clean
 
