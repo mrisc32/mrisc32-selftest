@@ -104,5 +104,6 @@ tests:
     .word   test_xor
     .word   test_add
     .word   test_sub
+    .word   test_seq
     .word   0
 

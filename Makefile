@@ -39,7 +39,8 @@ OBJS = \
   $(OUT)/test_bic.o \
   $(OUT)/test_xor.o \
   $(OUT)/test_add.o \
-  $(OUT)/test_sub.o
+  $(OUT)/test_sub.o \
+  $(OUT)/test_seq.o
 
 .PHONY: all clean
 
