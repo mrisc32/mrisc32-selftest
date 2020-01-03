@@ -100,6 +100,7 @@ tests:
     .word   test_or
     .word   test_nor
     .word   test_and
+    .word   test_bic
     .word   test_add
     .word   test_sub
     .word   0
