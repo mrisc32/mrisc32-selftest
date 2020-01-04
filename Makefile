@@ -57,7 +57,9 @@ OBJS = \
   $(OUT)/test_clz.o \
   $(OUT)/test_rev.o \
   $(OUT)/test_packb.o \
-  $(OUT)/test_packh.o
+  $(OUT)/test_packh.o \
+  $(OUT)/test_ldb.o
+
 
 .PHONY: all clean
 
