@@ -124,6 +124,7 @@ tests:
     .word   test_packh
 
     .word   test_ldb
+    .word   test_ldub
 
     .word   0
 
