@@ -87,7 +87,8 @@
     ; All unallocated CPUID commands should return zero.
     ;-------------------------------------------------------------------------
 
-    ; Make a few samples (checking all possibilities would take too long).
+    ; Make a few samples (checking all possibilities would take too long, and
+    ; would flood debug traces).
     ldi     s9, #0x00000002
 1:
     ldi     s10, #0x00000000
@@ -101,10 +102,10 @@
     CHECKEQ s11, 0
 
     add     s10, s10, #1
-    sle     s11, s10, #17
+    sle     s11, s10, #3
     bs      s11, 2b
     add     s9, s9, #1
-    sle     s11, s9, #33
+    sle     s11, s9, #5
     bs      s11, 1b
 
     END_TEST
