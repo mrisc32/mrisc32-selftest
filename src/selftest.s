@@ -118,5 +118,6 @@ tests:
     .word   test_lsl
     .word   test_lsr
     .word   test_shuf
+    .word   test_clz
     .word   0
 
