@@ -120,5 +120,6 @@ tests:
     .word   test_shuf
     .word   test_clz
     .word   test_rev
+    .word   test_packb
     .word   0
 
