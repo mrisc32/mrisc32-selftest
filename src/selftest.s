@@ -95,7 +95,7 @@ done:
 ; The test list. When a new test source file is added, also add the test here.
 ;-----------------------------------------------------------------------------
 
-tests:
+tests:	
     .word   test_cpuid
     .word   test_or
     .word   test_nor
@@ -115,6 +115,7 @@ tests:
     .word   test_minu
     .word   test_maxu
     .word   test_asr
+    .word   test_lsl
     .word   test_lsr
     .word   0
 
