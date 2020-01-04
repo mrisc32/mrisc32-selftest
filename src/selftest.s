@@ -109,5 +109,6 @@ tests:
     .word   test_slt
     .word   test_sltu
     .word   test_sle
+    .word   test_sleu
     .word   0
 
