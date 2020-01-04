@@ -114,5 +114,6 @@ tests:
     .word   test_max
     .word   test_minu
     .word   test_maxu
+    .word   test_asr
     .word   0
 

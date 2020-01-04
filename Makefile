@@ -49,7 +49,8 @@ OBJS = \
   $(OUT)/test_min.o \
   $(OUT)/test_max.o \
   $(OUT)/test_minu.o \
-  $(OUT)/test_maxu.o
+  $(OUT)/test_maxu.o \
+  $(OUT)/test_asr.o
 
 .PHONY: all clean
 
