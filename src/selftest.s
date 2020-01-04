@@ -121,5 +121,6 @@ tests:
     .word   test_clz
     .word   test_rev
     .word   test_packb
+    .word   test_packh
     .word   0
 
