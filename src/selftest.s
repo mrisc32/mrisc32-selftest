@@ -108,5 +108,6 @@ tests:
     .word   test_sne
     .word   test_slt
     .word   test_sltu
+    .word   test_sle
     .word   0
 
