@@ -113,5 +113,6 @@ tests:
     .word   test_min
     .word   test_max
     .word   test_minu
+    .word   test_maxu
     .word   0
 
