@@ -112,5 +112,6 @@ tests:
     .word   test_sleu
     .word   test_min
     .word   test_max
+    .word   test_minu
     .word   0
 
