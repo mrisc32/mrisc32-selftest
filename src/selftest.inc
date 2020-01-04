@@ -23,6 +23,14 @@
 
 ;-----------------------------------------------------------------------------
 ; Test macros for the MRISC32 selftest framework.
+;
+; Register allocation: In addition to the regular MRISC32 ABI rules (callee
+; saved regs etc), the test macros do the following allocations:
+;
+;  s1  - A temporary scratch register.
+;  s25 - The global test result.
+;
+; Do not use those registers in the test funcions.
 ;-----------------------------------------------------------------------------
 
 .macro  BEGIN_TEST name:req
@@ -69,16 +77,16 @@
     add     sp, sp, #44
 
     ; Return from the test
-    j       lr
+    ret
 
     .endfunc
 .endm
 
-.macro  CHECKEQ reg:req, value:req, tmpreg=s1
-    ldhi    \tmpreg, #\value@hi
-    or      \tmpreg, \tmpreg, #\value@lo
-    seq     \tmpreg, \reg, \tmpreg
-    and     s25, s25, \tmpreg
+.macro  CHECKEQ reg:req, value:req
+    ldhi    s1, #\value@hi
+    or      s1, s1, #\value@lo
+    seq     s1, \reg, s1
+    and     s25, s25, s1
 .endm
 
 .macro  NOVEC skiplabel:req

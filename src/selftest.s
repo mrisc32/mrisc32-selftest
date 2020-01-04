@@ -73,7 +73,7 @@ loop:
 
 no_callback:
     add     s19, s19, #1
-    j       pc, #loop@pc
+    b       loop
 
 done:
     mov     s1, s17         ; Return the total test result
@@ -84,7 +84,7 @@ done:
     ldw     s18, sp, #12
     ldw     s19, sp, #16
     add     sp, sp, #20
-    j       lr
+    ret
 
     .endfunc
 
