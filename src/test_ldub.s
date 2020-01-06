@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_ldub
 
-    ldea    s9, pc, #data@pc
+    add     s9, pc, #data@pc
 
     ; Immediate offset.
     ldub    s11, s9, #0
@@ -61,6 +61,5 @@
 
 data:
     .byte   1, -2, 3, -4, 5, -6, 7, -8, 9
-    .p2align 2
 
 

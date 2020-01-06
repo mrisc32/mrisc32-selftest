@@ -95,6 +95,7 @@ done:
 ; The test list. When a new test source file is added, also add the test here.
 ;-----------------------------------------------------------------------------
 
+    .p2align 2
 tests:
     .word   test_cpuid
     .word   test_or
