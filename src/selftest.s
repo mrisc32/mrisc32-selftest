@@ -127,6 +127,7 @@ tests:
     .word   test_ldb
     .word   test_ldub
     .word   test_ldh
+    .word   test_lduh
 
     .word   0
 
