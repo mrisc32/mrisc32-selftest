@@ -63,7 +63,8 @@ OBJS = \
   $(OUT)/test_ldh.o \
   $(OUT)/test_lduh.o \
   $(OUT)/test_ldw.o \
-  $(OUT)/test_j.o
+  $(OUT)/test_j.o \
+  $(OUT)/test_jl.o
 
 
 .PHONY: all clean
