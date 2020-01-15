@@ -130,5 +130,7 @@ tests:
     .word   test_lduh
     .word   test_ldw
 
+    .word   test_j
+
     .word   0
 
