@@ -30,25 +30,28 @@
     ldi     s11, #0     ; false
 
     bnz     s9, right1
-    bnz     s10, right1
     bnz     s11, wrong1
 wrong1:
     CHECKEQ z, 1
 right1:
 
-    bnz     s9, right2
-    bnz     s11, wrong2
     bnz     s10, right2
+    bnz     s11, wrong2
 wrong2:
     CHECKEQ z, 1
 right2:
 
     bnz     s11, wrong3
-    bnz     s10, right3
     bnz     s9, right3
 wrong3:
     CHECKEQ z, 1
 right3:
+
+    bnz     s11, wrong4
+    bnz     s10, right4
+wrong4:
+    CHECKEQ z, 1
+right4:
 
     END_TEST
 
