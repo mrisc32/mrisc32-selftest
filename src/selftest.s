@@ -138,6 +138,7 @@ tests:
     .word   test_bns
     .word   test_blt
     .word   test_bge
+    .word   test_ble
 
     .word   0
 
