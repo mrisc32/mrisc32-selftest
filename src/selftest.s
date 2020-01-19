@@ -135,6 +135,7 @@ tests:
     .word   test_bz
     .word   test_bnz
     .word   test_bs
+    .word   test_bns
 
     .word   0
 
