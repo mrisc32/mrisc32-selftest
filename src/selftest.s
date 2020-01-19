@@ -132,6 +132,7 @@ tests:
 
     .word   test_j
     .word   test_jl
+    .word   test_bz
 
     .word   0
 
