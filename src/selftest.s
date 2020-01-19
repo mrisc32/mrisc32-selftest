@@ -129,6 +129,7 @@ tests:
     .word   test_ldh
     .word   test_lduh
     .word   test_ldw
+    .word   test_ldea
 
     .word   test_j
     .word   test_jl
