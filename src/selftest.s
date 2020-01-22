@@ -135,6 +135,7 @@ tests:
     .word   test_stw
     .word   test_ldi
     .word   test_ldhi
+    .word   test_ldhio
 
     .word   test_j
     .word   test_jl
