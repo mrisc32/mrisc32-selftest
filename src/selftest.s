@@ -148,5 +148,7 @@ tests:
     .word   test_ble
     .word   test_bgt
 
+    .word   test_addpchi
+
     .word   0
 
