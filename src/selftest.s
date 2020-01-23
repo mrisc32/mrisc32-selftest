@@ -150,5 +150,7 @@ tests:
 
     .word   test_addpchi
 
+    .word   test_adds
+
     .word   0
 
