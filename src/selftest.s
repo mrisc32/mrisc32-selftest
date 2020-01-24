@@ -151,6 +151,7 @@ tests:
     .word   test_addpchi
 
     .word   test_adds
+    .word   test_addsu
 
     .word   0
 
