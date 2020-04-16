@@ -33,8 +33,7 @@
     rev     s10, s9
     CHECKEQ s10, -1
 
-    ldhi    s9,     #0x87654321@hi
-    or      s9, s9, #0x87654321@lo
+    ldi     s9, #0x87654321
     rev     s10, s9
     CHECKEQ s10, 0x84c2a6e1
 

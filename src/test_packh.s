@@ -25,11 +25,8 @@
 
     BEGIN_TEST  test_packh
 
-    ldhi    s9,     #0x87654321@hi
-    or      s9, s9, #0x87654321@lo
-
-    ldhi    s10,      #0x12345678@hi
-    or      s10, s10, #0x12345678@lo
+    ldi     s9,  #0x87654321
+    ldi     s10, #0x12345678
 
     packh   s11, s9, s10
     CHECKEQ s11, 0x43215678

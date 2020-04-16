@@ -32,7 +32,7 @@
 
     ; Register operands.
     ldi     s9, #0x00023456
-    ldhi    s10, #0xffff0000
+    ldi     s10, #0xffff0000
     and     s11, s9, s10
     CHECKEQ s11, 0x00020000
 

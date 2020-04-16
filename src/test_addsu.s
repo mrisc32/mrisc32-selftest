@@ -34,7 +34,7 @@
     CHECKEQ s11, 11293
 
     ; Saturate at max word.
-    ldhi    s9, #0x7ffff000
+    ldhi    s9,  #0x7ffff000
     ldhi    s10, #0x85432000
     addsu   s11, s9, s10
     CHECKEQ s11, 0xffffffff
@@ -43,18 +43,14 @@
     NOPO    no_packed_ops
 
     ; Packed half-word.
-    ldhi    s9,       #0x12348471@hi
-    or      s9, s9,   #0x12348471@lo
-    ldhi    s10,      #0x43f17f72@hi
-    or      s10, s10, #0x43f17f72@lo
+    ldi     s9,  #0x12348471
+    ldi     s10, #0x43f17f72
     addsu.h s11, s9, s10
     CHECKEQ s11, 0x5625ffff
 
     ; Packed byte.
-    ldhi    s9,       #0x12730185@hi
-    or      s9, s9,   #0x12730185@lo
-    ldhi    s10,      #0x3468ff81@hi
-    or      s10, s10, #0x3468ff81@lo
+    ldi     s9,  #0x12730185
+    ldi     s10, #0x3468ff81
     addsu.b s11, s9, s10
     CHECKEQ s11, 0x46dbffff
 

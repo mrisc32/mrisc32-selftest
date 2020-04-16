@@ -41,7 +41,7 @@
     asr     s11, s9, s10
     CHECKEQ s11, 0x11a2
 
-    ldhi    s9, #0xa9875000
+    ldi     s9, #0xa9875000
     ldi     s10, #17
     asr     s11, s9, s10
     CHECKEQ s11, 0xffffd4c3
@@ -49,12 +49,9 @@
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldhi    s9,       #0x1289ab78@hi
-    or      s9, s9,   #0x1289ab78@lo
-    ldhi    s10,      #0x0002000a@hi
-    or      s10, s10, #0x0002000a@lo
-    ldhi    s11,      #0x01020304@hi
-    or      s11, s11, #0x01020304@lo
+    ldi     s9,  #0x1289ab78
+    ldi     s10, #0x0002000a
+    ldi     s11, #0x01020304
 
     ; Packed half-word.
     asr.h   s12, s9, s10

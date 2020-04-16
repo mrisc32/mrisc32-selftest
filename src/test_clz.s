@@ -41,11 +41,11 @@
     clz     s10, s9
     CHECKEQ s10, 16
 
-    ldhi    s9, #0x08153000
+    ldi     s9, #0x08153000
     clz     s10, s9
     CHECKEQ s10, 4
 
-    ldhi    s9, #0x7e7df000
+    ldi     s9, #0x7e7df000
     clz     s10, s9
     CHECKEQ s10, 1
 

@@ -41,7 +41,7 @@
     lsl     s11, s9, s10
     CHECKEQ s11, 0x468ac0
 
-    ldhi    s9, #0xa9875000
+    ldi     s9, #0xa9875000
     ldi     s10, #17
     lsl     s11, s9, s10
     CHECKEQ s11, 0xa0000000
@@ -49,12 +49,9 @@
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldhi    s9,       #0x1289ab78@hi
-    or      s9, s9,   #0x1289ab78@lo
-    ldhi    s10,      #0x0002000a@hi
-    or      s10, s10, #0x0002000a@lo
-    ldhi    s11,      #0x01020304@hi
-    or      s11, s11, #0x01020304@lo
+    ldi     s9,  #0x1289ab78
+    ldi     s10, #0x0002000a
+    ldi     s11, #0x01020304
 
     ; Packed half-word.
     lsl.h   s12, s9, s10

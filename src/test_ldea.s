@@ -25,8 +25,7 @@
 
     BEGIN_TEST  test_ldea
 
-    ldhi    s9,     #0x12345678@hi
-    or      s9, s9, #0x12345678@lo
+    ldi     s9, #0x12345678
 
     ; Immediate offset.
     ldea    s10, s9, #0

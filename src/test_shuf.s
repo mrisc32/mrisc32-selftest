@@ -26,8 +26,7 @@
     BEGIN_TEST  test_shuf
 
     ; Immediate operand.
-    ldhi    s9,     #0x12ab8234@hi
-    or      s9, s9, #0x12ab8234@lo
+    ldi     s9, #0x12ab8234
 
     shuf    s10, s9, #0b0000000000000
     CHECKEQ s10, 0x34343434
@@ -47,8 +46,7 @@
     shuf    s11, s9, s10
     CHECKEQ s11, 0xffff8012
 
-    ldhi    s9,     #0x11223344@hi
-    or      s9, s9, #0x11223344@lo
+    ldi     s9, #0x11223344
     ldi     s10, #0b0000011010001
     shuf    s11, s9, s10
     CHECKEQ s11, 0x44112233

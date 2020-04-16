@@ -34,13 +34,13 @@
     CHECKEQ s11, 11293
 
     ; Saturate at max word.
-    ldhi    s9, #0x7ffff000
+    ldhi    s9,  #0x7ffff000
     ldhi    s10, #0x65432000
     adds    s11, s9, s10
     CHECKEQ s11, 0x7fffffff
 
     ; Saturate at min word.
-    ldhi    s9, #0x85432000
+    ldhi    s9,  #0x85432000
     ldhi    s10, #0x81234000
     adds    s11, s9, s10
     CHECKEQ s11, 0x80000000
@@ -49,26 +49,20 @@
     NOPO    no_packed_ops
 
     ; Packed half-word: unsaturated.
-    ldhi    s9,       #0x12340071@hi
-    or      s9, s9,   #0x12340071@lo
-    ldhi    s10,      #0x43f10072@hi
-    or      s10, s10, #0x43f10072@lo
+    ldi     s9,  #0x12340071
+    ldi     s10, #0x43f10072
     adds.h  s11, s9, s10
     CHECKEQ s11, 0x562500e3
 
     ; Packed half-word: saturated.
-    ldhi    s9,       #0x71238471@hi
-    or      s9, s9,   #0x71238471@lo
-    ldhi    s10,      #0x79998172@hi
-    or      s10, s10, #0x79998172@lo
+    ldi     s9,  #0x71238471
+    ldi     s10, #0x79998172
     adds.h  s11, s9, s10
     CHECKEQ s11, 0x7fff8000
 
     ; Packed byte.
-    ldhi    s9,       #0x12700185@hi
-    or      s9, s9,   #0x12700185@lo
-    ldhi    s10,      #0x3468ff81@hi
-    or      s10, s10, #0x3468ff81@lo
+    ldi     s9,  #0x12700185
+    ldi     s10, #0x3468ff81
     adds.b  s11, s9, s10
     CHECKEQ s11, 0x467f0080
 

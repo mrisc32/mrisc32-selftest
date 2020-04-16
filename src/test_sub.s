@@ -39,10 +39,8 @@
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldhi    s9,       #0x1234a698@hi
-    or      s9, s9,   #0x1234a698@lo
-    ldhi    s10,      #0xa7ef83a3@hi
-    or      s10, s10, #0xa7ef83a3@lo
+    ldi     s9,  #0x1234a698
+    ldi     s10, #0xa7ef83a3
 
     ; Packed half-word.
     sub.h   s11, s9, s10
