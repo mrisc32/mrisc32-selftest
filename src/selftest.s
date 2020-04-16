@@ -153,5 +153,7 @@ tests:
     .word   test_adds
     .word   test_addsu
 
+    .word   test_fadd
+
     .word   0
 

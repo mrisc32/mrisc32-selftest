@@ -82,7 +82,8 @@ OBJS = \
   $(OUT)/test_bgt.o \
   $(OUT)/test_addpchi.o \
   $(OUT)/test_adds.o \
-  $(OUT)/test_addsu.o
+  $(OUT)/test_addsu.o \
+  $(OUT)/test_fadd.o
 
 
 .PHONY: all clean
