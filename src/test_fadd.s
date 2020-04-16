@@ -25,22 +25,22 @@
 
     BEGIN_TEST  test_fadd
 
-    NOSA    no_fpu
+    NOFP    no_fpu
 
     ldi     s9,  #0x3f800000    ; 1.0
     ldi     s10, #0x3f800000    ; 1.0
     fadd    s11, s9, s10
     CHECKEQ s11, 0x40000000     ; 2.0
 
-    ldi     s9,  #0x40490fdb    ; 3.141592... (PI)
-    ldi     s10, #0x3f800000    ; 1.0
+    ldi     s9,  #0xbf800000    ; -1.0
+    ldi     s10, #0xbf800000    ; -1.0
     fadd    s11, s9, s10
-    CHECKEQ s11, 0x408487ee     ; 4.141592...
+    CHECKEQ s11, 0xc0000000     ; -2.0
 
-    ldi     s9,  #0x58635fa9    ; 1.0e15
-    ldi     s10, #0x3f800000    ; 1.0
+    ldi     s9,  #0x3f800000    ; 1.0
+    ldi     s10, #0xbf800000    ; -1.0
     fadd    s11, s9, s10
-    CHECKEQ s11, 0x58635fa9     ; 1.0e15
+    CHECKEQ s11, 0x00000000     ; 0.0
 
     ldi     s9,  #0xc49a4000    ; -1234.0
     ldi     s10, #0x00000000    ; 0.0
@@ -52,15 +52,25 @@
     fadd    s11, s9, s10
     CHECKEQ s11, 0x47768800     ; 63112.0
 
-    ldi     s9,  #0x3f7d70a4    ; 0.99000...
-    ldi     s10, #0x3f7d70a4    ; 0.99000...
+    ldi     s9,  #0x58635fa9    ; 1.0e15
+    ldi     s10, #0x3f800000    ; 1.0
     fadd    s11, s9, s10
-    CHECKEQ s11, 0x3ffd70a4     ; 1.98000...
+    CHECKEQ s11, 0x58635fa9     ; 1.0e15
 
-    ldi     s9,  #0xbf7d70a4    ; -0.99000...
-    ldi     s10, #0xbf7d70a4    ; -0.99000...
+    ldi     s9,  #0x7f7f0000    ; 3.38953138925e+38
+    ldi     s10, #0x7f7d8000    ; 3.36959296931e+38
     fadd    s11, s9, s10
-    CHECKEQ s11, 0xbffd70a4     ; -1.98000...
+    CHECKEQ s11, 0x7f800000     ; Inf
+
+    ldi     s9,  #0x7f7f0000    ; 3.38953138925e+38
+    ldi     s10, #0xff7d8000    ; -3.36959296931e+38
+    fadd    s11, s9, s10
+    CHECKEQ s11, 0x7bc00000     ; 1.99384199368e+36
+
+    ldi     s9,  #0x7f800000    ; Inf
+    ldi     s10, #0xff800000    ; -Inf
+    fadd    s11, s9, s10
+    CHECKNAN s11                ; NaN
 
     ; Can we do packed operations?
     NOPO    no_packed_ops

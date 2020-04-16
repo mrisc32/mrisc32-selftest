@@ -27,8 +27,8 @@
 ; Register allocation: In addition to the regular MRISC32 ABI rules (callee
 ; saved regs etc), the test macros do the following allocations:
 ;
-;  s1  - A temporary scratch register.
-;  s25 - The global test result.
+;  s1, s2 - Temporary scratch registers.
+;  s25    - The global test result.
 ;
 ; Do not use those registers in the test funcions.
 ;-----------------------------------------------------------------------------
@@ -85,6 +85,17 @@
 .macro  CHECKEQ reg:req, value:req
     ldi     s1, #\value
     seq     s1, \reg, s1
+    and     s25, s25, s1
+.endm
+
+.macro  CHECKNAN reg:req
+    ldi     s1, #0x7f800000
+    and     s2, \reg, s1
+    seq     s1, s2, s1      ; reg & 0x7f800000 == 0x7f800000
+    and     s25, s25, s1
+    ldi     s1, #0x007fffff
+    and     s1, \reg, s1
+    sne     s1, s1, z       ; reg & 0x007fffff != 0
     and     s25, s25, s1
 .endm
 
