@@ -133,7 +133,7 @@ tests:
     .word   test_stb
     .word   test_sth
     .word   test_stw
-    .word   test_ldi
+    .word   test_ldli
     .word   test_ldhi
     .word   test_ldhio
 

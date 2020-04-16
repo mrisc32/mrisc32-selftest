@@ -67,7 +67,7 @@ OBJS = \
   $(OUT)/test_stb.o \
   $(OUT)/test_sth.o \
   $(OUT)/test_stw.o \
-  $(OUT)/test_ldi.o \
+  $(OUT)/test_ldli.o \
   $(OUT)/test_ldhi.o \
   $(OUT)/test_ldhio.o \
   $(OUT)/test_j.o \

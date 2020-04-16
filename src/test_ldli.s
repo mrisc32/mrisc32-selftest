@@ -23,14 +23,14 @@
 
     .include    "selftest.inc"
 
-    BEGIN_TEST  test_ldi
+    BEGIN_TEST  test_ldli
 
     ; Positive 20-bit word.
-    ldi     s9, #0x0fffff
+    ldli    s9, #0x0fffff
     CHECKEQ s9, 0x0fffff
 
     ; Negative 21-bit word.
-    ldi     s9, #0xfff00000
+    ldli    s9, #0xfff00000
     CHECKEQ s9, 0xfff00000
 
     END_TEST

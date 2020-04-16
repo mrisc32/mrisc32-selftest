@@ -83,8 +83,7 @@
 .endm
 
 .macro  CHECKEQ reg:req, value:req
-    ldhi    s1, #\value@hi
-    or      s1, s1, #\value@lo
+    ldi     s1, #\value
     seq     s1, \reg, s1
     and     s25, s25, s1
 .endm
