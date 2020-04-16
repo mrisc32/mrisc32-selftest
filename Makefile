@@ -21,8 +21,8 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #-----------------------------------------------------------------------------
 
-AS = mrisc32-elf-as
-ASFLAGS = -I src
+AS = mrisc32-elf-gcc
+ASFLAGS = -c -I src
 AR = mrisc32-elf-ar
 ARFLAGS = crs
 
