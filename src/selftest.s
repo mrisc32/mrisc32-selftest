@@ -121,8 +121,7 @@ tests:
     .word   test_shuf
     .word   test_clz
     .word   test_rev
-    .word   test_packb
-    .word   test_packh
+    .word   test_pack
 
     .word   test_ldb
     .word   test_ldub
