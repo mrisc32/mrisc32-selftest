@@ -38,47 +38,15 @@
     .p2align    2
     .global     \name
     .func       \name
-
 \name\():
-    ; Save s16-s25 & lr
-    add     sp, sp, #-44
-    stw     s16, sp, #0
-    stw     s17, sp, #4
-    stw     s18, sp, #8
-    stw     s19, sp, #12
-    stw     s20, sp, #16
-    stw     s21, sp, #20
-    stw     s22, sp, #24
-    stw     s23, sp, #28
-    stw     s24, sp, #32
-    stw     s25, sp, #36
-    stw     lr, sp, #40
-
-    ; s25 holds the test result (TRUE by default).
-    ldi     s25, #-1
+    ; Preserve LR in S1 and call selftest_prologue().
+    mov     s1, lr
+    jl      pc, #selftest_prologue@pc
 .endm
 
 .macro  END_TEST
-    ; Move the test result to s1 (the return value).
-    mov     s1, s25
-
-    ; Restore s16-s25 & lr
-    ldw     s16, sp, #0
-    ldw     s17, sp, #4
-    ldw     s18, sp, #8
-    ldw     s19, sp, #12
-    ldw     s20, sp, #16
-    ldw     s21, sp, #20
-    ldw     s22, sp, #24
-    ldw     s23, sp, #28
-    ldw     s24, sp, #32
-    ldw     s25, sp, #36
-    ldw     lr, sp, #40
-    add     sp, sp, #44
-
-    ; Return from the test
-    ret
-
+    ; Make a sibling-call to selftest_epilogue().
+    j       pc, #selftest_epilogue@pc
     .endfunc
 .endm
 

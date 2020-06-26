@@ -89,6 +89,68 @@ done:
     .endfunc
 
 
+;-----------------------------------------------------------------------------
+; Test prologue and epilogue functions.
+;-----------------------------------------------------------------------------
+
+    .p2align 2
+    .global selftest_prologue
+    .func   selftest_prologue
+
+selftest_prologue:
+    ; This is called from BEGIN_TEST.
+    ; Note: BEGIN_TEST has preserved LR in S1 before calling this function.
+    add     sp, sp, #-44
+    stw     s16, sp, #0
+    stw     s17, sp, #4
+    stw     s18, sp, #8
+    stw     s19, sp, #12
+    stw     s20, sp, #16
+    stw     s21, sp, #20
+    stw     s22, sp, #24
+    stw     s23, sp, #28
+    stw     s24, sp, #32
+    stw     s25, sp, #36
+    stw     s1, sp, #40     ; Actually: S1 = LR for the test function.
+
+    ; s25 holds the test result (TRUE by default).
+    ldi     s25, #-1
+
+    ; Return to the test
+    ret
+
+    .endfunc
+
+    .p2align 2
+    .global selftest_epilogue
+    .func   selftest_epilogue
+
+selftest_epilogue:
+    ; This is sibling-called from END_TEST.
+
+    ; Move the test result to s1 (the return value).
+    mov     s1, s25
+
+    ; Restore s16-s25 & lr
+    ldw     s16, sp, #0
+    ldw     s17, sp, #4
+    ldw     s18, sp, #8
+    ldw     s19, sp, #12
+    ldw     s20, sp, #16
+    ldw     s21, sp, #20
+    ldw     s22, sp, #24
+    ldw     s23, sp, #28
+    ldw     s24, sp, #32
+    ldw     s25, sp, #36
+    ldw     lr, sp, #40
+    add     sp, sp, #44
+
+    ; Return from the test
+    ret
+
+    .endfunc
+
+
     .section .rodata
 
 ;-----------------------------------------------------------------------------
