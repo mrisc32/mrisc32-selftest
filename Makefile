@@ -57,6 +57,8 @@ OBJS = \
   $(OUT)/test_clz.o \
   $(OUT)/test_rev.o \
   $(OUT)/test_pack.o \
+  $(OUT)/test_packs.o \
+  $(OUT)/test_packsu.o \
   $(OUT)/test_ldb.o \
   $(OUT)/test_ldub.o \
   $(OUT)/test_ldh.o \

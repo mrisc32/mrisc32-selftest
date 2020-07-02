@@ -184,6 +184,8 @@ tests:
     .word   test_clz
     .word   test_rev
     .word   test_pack
+    .word   test_packs
+    .word   test_packsu
 
     .word   test_ldb
     .word   test_ldub
