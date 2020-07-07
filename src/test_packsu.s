@@ -25,6 +25,7 @@
 
     BEGIN_TEST  test_packsu
 
+    NOPO    no_packed_ops
     NOSA    no_saturating_ops
 
     ldi     s9,  #0x87654321
@@ -37,9 +38,6 @@
     packsu  s13, s11, s12
     CHECKEQ s13, 0x4321ffff
 
-    ; Can we do packed operations?
-    NOPO    no_packed_ops
-
     ; Packed half-word.
     packsu.h s11, s9, s10
     CHECKEQ s11, 0xff00ffff
@@ -48,8 +46,8 @@
     packsu.b s11, s9, s10
     CHECKEQ s11, 0xf0f0ffff
 
-no_packed_ops:
 no_saturating_ops:
+no_packed_ops:
 
     END_TEST
 

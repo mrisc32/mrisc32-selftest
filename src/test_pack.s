@@ -25,14 +25,13 @@
 
     BEGIN_TEST  test_pack
 
+    NOPO    no_packed_ops
+
     ldi     s9,  #0x87654321
     ldi     s10, #0x12345678
 
     pack    s11, s9, s10
     CHECKEQ s11, 0x43215678
-
-    ; Can we do packed operations?
-    NOPO    no_packed_ops
 
     ; Packed half-word.
     pack.h  s11, s9, s10
