@@ -56,6 +56,7 @@ OBJS = \
   $(OUT)/test_shuf.o \
   $(OUT)/test_sel.o \
   $(OUT)/test_clz.o \
+  $(OUT)/test_popcnt.o \
   $(OUT)/test_rev.o \
   $(OUT)/test_pack.o \
   $(OUT)/test_packs.o \

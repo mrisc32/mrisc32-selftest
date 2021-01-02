@@ -183,6 +183,7 @@ tests:
     .word   test_shuf
     .word   test_sel
     .word   test_clz
+    .word   test_popcnt
     .word   test_rev
     .word   test_pack
     .word   test_packs
