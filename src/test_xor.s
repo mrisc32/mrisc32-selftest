@@ -31,9 +31,15 @@
     CHECKEQ s10, 0x00023b03
 
     ; Register operands.
-    ldi     s9, #0x00023456
-    ldi     s10, #0xffff0000
+    ldi     s9, #0x00023456    ; Neg: 0xfffdcba9
+    ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
     xor     s11, s9, s10
+    CHECKEQ s11, 0xfffd3456
+    xor_pn  s11, s9, s10
+    CHECKEQ s11, 0x0002cba9
+    xor_np  s11, s9, s10
+    CHECKEQ s11, 0x0002cba9
+    xor_nn  s11, s9, s10
     CHECKEQ s11, 0xfffd3456
 
     END_TEST

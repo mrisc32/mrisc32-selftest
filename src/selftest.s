@@ -161,9 +161,7 @@ selftest_epilogue:
 tests:
     .word   test_cpuid
     .word   test_or
-    .word   test_nor
     .word   test_and
-    .word   test_bic
     .word   test_xor
     .word   test_add
     .word   test_sub

@@ -31,10 +31,16 @@
     CHECKEQ s10, 0x00000454
 
     ; Register operands.
-    ldi     s9, #0x00023456
-    ldi     s10, #0xffff0000
+    ldi     s9, #0x00023456    ; Neg: 0xfffdcba9
+    ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
     and     s11, s9, s10
     CHECKEQ s11, 0x00020000
+    and_pn  s11, s9, s10
+    CHECKEQ s11, 0x00003456
+    and_np  s11, s9, s10
+    CHECKEQ s11, 0xfffd0000
+    and_nn  s11, s9, s10
+    CHECKEQ s11, 0x0000cba9
 
     END_TEST
 

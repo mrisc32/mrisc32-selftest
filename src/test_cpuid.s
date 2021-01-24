@@ -79,7 +79,7 @@
 
     ; Make sure that the upper bits are all zero (only the lower 7 bits have
     ; meaning).
-    bic     s12, s11, #0x0000007f
+    and     s12, s11, #~0x0000007f
     CHECKEQ s12, 0
 
 

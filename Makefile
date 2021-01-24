@@ -34,9 +34,7 @@ OBJS = \
   $(OUT)/selftest.o \
   $(OUT)/test_cpuid.o \
   $(OUT)/test_or.o \
-  $(OUT)/test_nor.o \
   $(OUT)/test_and.o \
-  $(OUT)/test_bic.o \
   $(OUT)/test_xor.o \
   $(OUT)/test_add.o \
   $(OUT)/test_sub.o \
