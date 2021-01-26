@@ -35,11 +35,11 @@
     ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
     or      s11, s9, s10
     CHECKEQ s11, 0xffff3456
-    or_pn   s11, s9, s10
+    or.pn   s11, s9, s10
     CHECKEQ s11, 0x0002ffff
-    or_np   s11, s9, s10
+    or.np   s11, s9, s10
     CHECKEQ s11, 0xffffcba9
-    or_nn   s11, s9, s10
+    or.nn   s11, s9, s10
     CHECKEQ s11, 0xfffdffff
 
     END_TEST

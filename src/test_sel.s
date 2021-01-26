@@ -41,15 +41,15 @@
     CHECKEQ s12, 0x92b45e70
 
     mov     s12, s9
-    sel_1   s12, s10, s11
+    sel.132 s12, s10, s11
     CHECKEQ s12, 0x1a3cd6f8
 
     mov     s12, s10
-    sel_2   s12, s9, s11
+    sel.213 s12, s9, s11
     CHECKEQ s12, 0x92b45e70
 
     mov     s12, s10
-    sel_3   s12, s9, s11
+    sel.231 s12, s9, s11
     CHECKEQ s12, 0x1a3cd6f8
 
     END_TEST

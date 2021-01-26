@@ -35,11 +35,11 @@
     ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
     xor     s11, s9, s10
     CHECKEQ s11, 0xfffd3456
-    xor_pn  s11, s9, s10
+    xor.pn  s11, s9, s10
     CHECKEQ s11, 0x0002cba9
-    xor_np  s11, s9, s10
+    xor.np  s11, s9, s10
     CHECKEQ s11, 0x0002cba9
-    xor_nn  s11, s9, s10
+    xor.nn  s11, s9, s10
     CHECKEQ s11, 0xfffd3456
 
     END_TEST
