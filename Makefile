@@ -21,84 +21,103 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #-----------------------------------------------------------------------------
 
-AS = mrisc32-elf-gcc
+OUT = out
+
+AS      = mrisc32-elf-gcc
 ASFLAGS = -c -I src
-AR = mrisc32-elf-ar
+AR      = mrisc32-elf-ar
 ARFLAGS = crs
 
-OUT = out
+CC      = mrisc32-elf-gcc
+CFLAGS  = -c -O2 -W -Wall -I src
+LD      = mrisc32-elf-gcc
+LDFLAGS = -L$(OUT) -msim
+OBJCOPY = mrisc32-elf-objcopy
 
 LIBSELFTEST = $(OUT)/libselftest.a
 
-OBJS = \
+LIBOBJS = \
   $(OUT)/selftest.o \
-  $(OUT)/test_cpuid.o \
-  $(OUT)/test_or.o \
-  $(OUT)/test_and.o \
-  $(OUT)/test_xor.o \
   $(OUT)/test_add.o \
-  $(OUT)/test_sub.o \
-  $(OUT)/test_seq.o \
-  $(OUT)/test_sne.o \
-  $(OUT)/test_slt.o \
-  $(OUT)/test_sltu.o \
-  $(OUT)/test_sle.o \
-  $(OUT)/test_sleu.o \
-  $(OUT)/test_min.o \
-  $(OUT)/test_max.o \
-  $(OUT)/test_minu.o \
-  $(OUT)/test_maxu.o \
-  $(OUT)/test_asr.o \
-  $(OUT)/test_lsl.o \
-  $(OUT)/test_lsr.o \
-  $(OUT)/test_shuf.o \
-  $(OUT)/test_sel.o \
-  $(OUT)/test_clz.o \
-  $(OUT)/test_popcnt.o \
-  $(OUT)/test_rev.o \
-  $(OUT)/test_pack.o \
-  $(OUT)/test_packs.o \
-  $(OUT)/test_packsu.o \
-  $(OUT)/test_ldb.o \
-  $(OUT)/test_ldub.o \
-  $(OUT)/test_ldh.o \
-  $(OUT)/test_lduh.o \
-  $(OUT)/test_ldw.o \
-  $(OUT)/test_ldea.o \
-  $(OUT)/test_stb.o \
-  $(OUT)/test_sth.o \
-  $(OUT)/test_stw.o \
-  $(OUT)/test_ldli.o \
-  $(OUT)/test_ldhi.o \
-  $(OUT)/test_j.o \
-  $(OUT)/test_jl.o \
-  $(OUT)/test_bz.o \
-  $(OUT)/test_bnz.o \
-  $(OUT)/test_bs.o \
-  $(OUT)/test_bns.o \
-  $(OUT)/test_blt.o \
-  $(OUT)/test_bge.o \
-  $(OUT)/test_ble.o \
-  $(OUT)/test_bgt.o \
   $(OUT)/test_addpchi.o \
   $(OUT)/test_adds.o \
   $(OUT)/test_addsu.o \
-  $(OUT)/test_fadd.o
+  $(OUT)/test_and.o \
+  $(OUT)/test_asr.o \
+  $(OUT)/test_bge.o \
+  $(OUT)/test_bgt.o \
+  $(OUT)/test_ble.o \
+  $(OUT)/test_blt.o \
+  $(OUT)/test_bns.o \
+  $(OUT)/test_bnz.o \
+  $(OUT)/test_bs.o \
+  $(OUT)/test_bz.o \
+  $(OUT)/test_clz.o \
+  $(OUT)/test_cpuid.o \
+  $(OUT)/test_fadd.o \
+  $(OUT)/test_jl.o \
+  $(OUT)/test_j.o \
+  $(OUT)/test_ldb.o \
+  $(OUT)/test_ldea.o \
+  $(OUT)/test_ldhi.o \
+  $(OUT)/test_ldh.o \
+  $(OUT)/test_ldli.o \
+  $(OUT)/test_ldub.o \
+  $(OUT)/test_lduh.o \
+  $(OUT)/test_ldw.o \
+  $(OUT)/test_lsl.o \
+  $(OUT)/test_lsr.o \
+  $(OUT)/test_max.o \
+  $(OUT)/test_maxu.o \
+  $(OUT)/test_min.o \
+  $(OUT)/test_minu.o \
+  $(OUT)/test_or.o \
+  $(OUT)/test_pack.o \
+  $(OUT)/test_packs.o \
+  $(OUT)/test_packsu.o \
+  $(OUT)/test_popcnt.o \
+  $(OUT)/test_rev.o \
+  $(OUT)/test_sel.o \
+  $(OUT)/test_seq.o \
+  $(OUT)/test_shuf.o \
+  $(OUT)/test_sle.o \
+  $(OUT)/test_sleu.o \
+  $(OUT)/test_slt.o \
+  $(OUT)/test_sltu.o \
+  $(OUT)/test_sne.o \
+  $(OUT)/test_stb.o \
+  $(OUT)/test_sth.o \
+  $(OUT)/test_stw.o \
+  $(OUT)/test_sub.o \
+  $(OUT)/test_xor.o
 
+RUNTESTS = $(OUT)/runtests
+
+RUNTESTSOBJS = \
+  $(OUT)/runtests.o
 
 .PHONY: all clean
 
-all: $(LIBSELFTEST)
+all: $(LIBSELFTEST) $(RUNTESTS)
 
 clean:
 	rm -rf $(OUT)/*
 
-$(LIBSELFTEST): $(OBJS)
-	$(AR) $(ARFLAGS) $(LIBSELFTEST) $(OBJS)
+$(LIBSELFTEST): $(LIBOBJS)
+	$(AR) $(ARFLAGS) $(LIBSELFTEST) $(LIBOBJS)
 
 $(OUT)/selftest.o: src/selftest.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(OUT)/test_%.o: src/test_%.s
 	$(AS) $(ASFLAGS) -o $@ $<
+
+$(RUNTESTS): $(OUT)/runtests.elf
+	$(OBJCOPY) -O binary $< $@
+
+$(OUT)/runtests.elf: $(RUNTESTSOBJS) $(LIBSELFTEST)
+	$(LD) $(LDFLAGS) -o $@ $(RUNTESTSOBJS) -lselftest
+
+$(OUT)/runtests.o: src/runtests.c
+	$(CC) $(CFLAGS) -o $@ $<
 
