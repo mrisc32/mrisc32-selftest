@@ -216,10 +216,14 @@ tests:
     .word   test_addsu
     .word   test_addh
     .word   test_addhu
+    .word   test_addhr
+    .word   test_addhur
     .word   test_subs
     .word   test_subsu
     .word   test_subh
     .word   test_subhu
+    .word   test_subhr
+    .word   test_subhur
 
     .word   test_fadd
 
