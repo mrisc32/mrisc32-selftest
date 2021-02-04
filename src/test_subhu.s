@@ -1,6 +1,6 @@
 ; -*- mode: mr32asm; tab-width: 4; indent-tabs-mode: nil; -*-
 ;-----------------------------------------------------------------------------
-; Copyright (c) 2020 Marcus Geelnard
+; Copyright (c) 2021 Marcus Geelnard
 ;
 ; This software is provided 'as-is', without any express or implied warranty.
 ; In no event will the authors be held liable for any damages arising from
@@ -23,48 +23,36 @@
 
     .include    "selftest.inc"
 
-    BEGIN_TEST  test_adds
+    BEGIN_TEST  test_subhu
 
     NOSA    no_saturating_ops
 
-    ; Unsaturated should be the same as add.
-    ldi     s9, #1367
-    ldi     s10, #9926
-    adds    s11, s9, s10
-    CHECKEQ s11, 11293
+    ; No rounding.
+    ldi     s9,  #0x7fffffff
+    ldi     s10, #0x65432124
+    subhu   s11, s9, s10
+    CHECKEQ s11, 0x0d5e6f6d
 
-    ; Saturate at max word.
-    ldi     s9,  #0x7ffff000
-    ldi     s10, #0x65432000
-    adds    s11, s9, s10
-    CHECKEQ s11, 0x7fffffff
-
-    ; Saturate at min word.
-    ldi     s9,  #0x85432000
-    ldi     s10, #0x81234000
-    adds    s11, s9, s10
-    CHECKEQ s11, 0x80000000
+    ; Unsigned operands.
+    ldi     s9,  #0xffffff85  ; (-123)
+    ldi     s10, #0x0000007c  ; (124)
+    subhu   s11, s9, s10
+    CHECKEQ s11, 0x7fffff84
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ; Packed half-word: unsaturated.
-    ldi     s9,  #0x12340071
-    ldi     s10, #0x43f10072
-    adds.h  s11, s9, s10
-    CHECKEQ s11, 0x562500e3
-
-    ; Packed half-word: saturated.
+    ; Packed half-word.
     ldi     s9,  #0x71238471
-    ldi     s10, #0x79998172
-    adds.h  s11, s9, s10
-    CHECKEQ s11, 0x7fff8000
+    ldi     s10, #0x81727999
+    subhu.h s11, s9, s10
+    CHECKEQ s11, 0xf7d8056c
 
     ; Packed byte.
-    ldi     s9,  #0x12700185
+    ldi     s9,  #0x13700185
     ldi     s10, #0x3468ff81
-    adds.b  s11, s9, s10
-    CHECKEQ s11, 0x467f0080
+    subhu.b s11, s9, s10
+    CHECKEQ s11, 0xef048102
 
 no_packed_ops:
 no_saturating_ops:

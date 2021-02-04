@@ -214,6 +214,12 @@ tests:
 
     .word   test_adds
     .word   test_addsu
+    .word   test_addh
+    .word   test_addhu
+    .word   test_subs
+    .word   test_subsu
+    .word   test_subh
+    .word   test_subhu
 
     .word   test_fadd
 

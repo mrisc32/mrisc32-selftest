@@ -39,6 +39,8 @@ LIBSELFTEST = $(OUT)/libselftest.a
 LIBOBJS = \
   $(OUT)/selftest.o \
   $(OUT)/test_add.o \
+  $(OUT)/test_addh.o \
+  $(OUT)/test_addhu.o \
   $(OUT)/test_addpchi.o \
   $(OUT)/test_adds.o \
   $(OUT)/test_addsu.o \
@@ -89,6 +91,10 @@ LIBOBJS = \
   $(OUT)/test_sth.o \
   $(OUT)/test_stw.o \
   $(OUT)/test_sub.o \
+  $(OUT)/test_subh.o \
+  $(OUT)/test_subhu.o \
+  $(OUT)/test_subs.o \
+  $(OUT)/test_subsu.o \
   $(OUT)/test_xor.o
 
 RUNTESTS = $(OUT)/runtests
