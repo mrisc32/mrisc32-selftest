@@ -187,6 +187,9 @@ tests:
     .word   test_packs
     .word   test_packsu
 
+    .word   test_mulq
+    .word   test_mulqr
+
     .word   test_ldb
     .word   test_ldub
     .word   test_ldh

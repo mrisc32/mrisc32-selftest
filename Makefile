@@ -75,6 +75,8 @@ LIBOBJS = \
   $(OUT)/test_maxu.o \
   $(OUT)/test_min.o \
   $(OUT)/test_minu.o \
+  $(OUT)/test_mulq.o \
+  $(OUT)/test_mulqr.o \
   $(OUT)/test_or.o \
   $(OUT)/test_pack.o \
   $(OUT)/test_packs.o \
