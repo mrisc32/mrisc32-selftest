@@ -79,6 +79,9 @@ LIBOBJS = \
   $(OUT)/test_mulqr.o \
   $(OUT)/test_or.o \
   $(OUT)/test_pack.o \
+  $(OUT)/test_packhi.o \
+  $(OUT)/test_packhir.o \
+  $(OUT)/test_packhiur.o \
   $(OUT)/test_packs.o \
   $(OUT)/test_packsu.o \
   $(OUT)/test_popcnt.o \

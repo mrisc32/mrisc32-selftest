@@ -184,6 +184,9 @@ tests:
     .word   test_popcnt
     .word   test_rev
     .word   test_pack
+    .word   test_packhi
+    .word   test_packhir
+    .word   test_packhiur
     .word   test_packs
     .word   test_packsu
 
