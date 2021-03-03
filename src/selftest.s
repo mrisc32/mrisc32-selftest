@@ -175,9 +175,9 @@ tests:
     .word   test_max
     .word   test_minu
     .word   test_maxu
-    .word   test_asr
-    .word   test_lsl
-    .word   test_lsr
+    .word   test_ebf
+    .word   test_ebfu
+    .word   test_mkbf
     .word   test_shuf
     .word   test_sel
     .word   test_clz

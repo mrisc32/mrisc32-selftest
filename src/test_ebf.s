@@ -23,43 +23,43 @@
 
     .include    "selftest.inc"
 
-    BEGIN_TEST  test_asr
+    BEGIN_TEST  test_ebf
 
     ; Immediate operand.
     ldi     s9, #123456
-    asr     s10, s9, #3
+    ebf     s10, s9, #3         ; Pure shift.
     CHECKEQ s10, 15432
 
     ldi     s9, #-41
-    asr     s10, s9, #33    ; Only the lowest 5 bits are used (i.e. >> 1)!
-    CHECKEQ s10, -21
+    ebf     s10, s9, #(7<<5)|3  ; Width and shift.
+    CHECKEQ s10, 0xfffffffa
 
 
     ; Register operands.
     ldi     s9, #0x23456
     ldi     s10, #5
-    asr     s11, s9, s10
+    ebf     s11, s9, s10
     CHECKEQ s11, 0x11a2
 
     ldi     s9, #0xa9875000
     ldi     s10, #17
-    asr     s11, s9, s10
+    ebf     s11, s9, s10
     CHECKEQ s11, 0xffffd4c3
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
     ldi     s9,  #0x1289ab78
-    ldi     s10, #0x0002000a
-    ldi     s11, #0x01020304
+    ldi     s10, #0x0062000a
+    ldi     s11, #0x11020304
 
     ; Packed half-word.
-    asr.h   s12, s9, s10
-    CHECKEQ s12, 0x04a2ffea
+    ebf.h   s12, s9, s10
+    CHECKEQ s12, 0xffe2ffea
 
     ; Packed byte.
-    asr.b   s12, s9, s11
-    CHECKEQ s12, 0x09e2f507
+    ebf.b   s12, s9, s11
+    CHECKEQ s12, 0x01e2f507
 
 no_packed_ops:
 

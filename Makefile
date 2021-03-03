@@ -47,7 +47,6 @@ LIBOBJS = \
   $(OUT)/test_adds.o \
   $(OUT)/test_addsu.o \
   $(OUT)/test_and.o \
-  $(OUT)/test_asr.o \
   $(OUT)/test_bge.o \
   $(OUT)/test_bgt.o \
   $(OUT)/test_ble.o \
@@ -58,6 +57,8 @@ LIBOBJS = \
   $(OUT)/test_bz.o \
   $(OUT)/test_clz.o \
   $(OUT)/test_cpuid.o \
+  $(OUT)/test_ebf.o \
+  $(OUT)/test_ebfu.o \
   $(OUT)/test_fadd.o \
   $(OUT)/test_jl.o \
   $(OUT)/test_j.o \
@@ -69,12 +70,11 @@ LIBOBJS = \
   $(OUT)/test_ldub.o \
   $(OUT)/test_lduh.o \
   $(OUT)/test_ldw.o \
-  $(OUT)/test_lsl.o \
-  $(OUT)/test_lsr.o \
   $(OUT)/test_max.o \
   $(OUT)/test_maxu.o \
   $(OUT)/test_min.o \
   $(OUT)/test_minu.o \
+  $(OUT)/test_mkbf.o \
   $(OUT)/test_mulq.o \
   $(OUT)/test_mulqr.o \
   $(OUT)/test_or.o \

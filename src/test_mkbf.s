@@ -23,43 +23,42 @@
 
     .include    "selftest.inc"
 
-    BEGIN_TEST  test_lsr
+    BEGIN_TEST  test_mkbf
 
-    ; Immediate operand.
+    ; Immediate operands.
     ldi     s9, #123456
-    lsr     s10, s9, #3
-    CHECKEQ s10, 15432
+    mkbf    s10, s9, #3         ; Pure shift.
+    CHECKEQ s10, 987648
 
     ldi     s9, #-41
-    lsr     s10, s9, #33    ; Only the lowest 5 bits are used (i.e. >> 1)!
-    CHECKEQ s10, 2147483627
-
+    mkbf    s10, s9, #(7<<5)|3  ; Width and shift.
+    CHECKEQ s10, 696
 
     ; Register operands.
     ldi     s9, #0x23456
     ldi     s10, #5
-    lsr     s11, s9, s10
-    CHECKEQ s11, 0x11a2
+    mkbf    s11, s9, s10
+    CHECKEQ s11, 0x468ac0
 
     ldi     s9, #0xa9875000
     ldi     s10, #17
-    lsr     s11, s9, s10
-    CHECKEQ s11, 0x000054c3
+    mkbf    s11, s9, s10
+    CHECKEQ s11, 0xa0000000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi    s9,  #0x1289ab78
-    ldi    s10, #0x0002000a
-    ldi    s11, #0x01020304
+    ldi     s9,  #0x1289ab78
+    ldi     s10, #0x0062000a
+    ldi     s11, #0x11028304
 
     ; Packed half-word.
-    lsr.h   s12, s9, s10
-    CHECKEQ s12, 0x04a2002a
+    mkbf.h  s12, s9, s10
+    CHECKEQ s12, 0x0024e000
 
     ; Packed byte.
-    lsr.b   s12, s9, s11
-    CHECKEQ s12, 0x09221507
+    mkbf.b  s12, s9, s11
+    CHECKEQ s12, 0x04245880
 
 no_packed_ops:
 
