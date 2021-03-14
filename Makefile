@@ -70,6 +70,7 @@ LIBOBJS = \
   $(OUT)/test_ldub.o \
   $(OUT)/test_lduh.o \
   $(OUT)/test_ldw.o \
+  $(OUT)/test_ldwpc.o \
   $(OUT)/test_max.o \
   $(OUT)/test_maxu.o \
   $(OUT)/test_min.o \
@@ -97,6 +98,7 @@ LIBOBJS = \
   $(OUT)/test_stb.o \
   $(OUT)/test_sth.o \
   $(OUT)/test_stw.o \
+  $(OUT)/test_stwpc.o \
   $(OUT)/test_sub.o \
   $(OUT)/test_subh.o \
   $(OUT)/test_subhr.o \
