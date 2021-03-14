@@ -216,6 +216,8 @@ tests:
     .word   test_ble
     .word   test_bgt
 
+    .word   test_ldwpc
+    .word   test_stwpc
     .word   test_addpchi
 
     .word   test_adds
