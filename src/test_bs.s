@@ -33,21 +33,21 @@
     bs      s10, wrong1
     bs      s11, wrong1
 wrong1:
-    CHECKEQ z, 1
+    FAIL
 right1:
 
     bs      s10, wrong2
     bs      s9, right2
     bs      s11, wrong2
 wrong2:
-    CHECKEQ z, 1
+    FAIL
 right2:
 
     bs      s10, wrong3
     bs      s11, wrong3
     bs      s9, right3
 wrong3:
-    CHECKEQ z, 1
+    FAIL
 right3:
 
     END_TEST

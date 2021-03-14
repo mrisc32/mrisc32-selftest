@@ -33,7 +33,7 @@
     j       s9, #0
 
 wrong1:
-    CHECKEQ z, 1    ; False
+    FAIL
 
 right1:
 

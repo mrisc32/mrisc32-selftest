@@ -56,6 +56,10 @@
     and     s25, s25, s1
 .endm
 
+.macro  FAIL
+    ldi     s25, #0
+.endm
+
 .macro  CHECKNAN reg:req
     ldi     s1, #0x7f800000
     and     s2, \reg, s1

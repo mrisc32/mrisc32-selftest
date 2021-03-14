@@ -29,7 +29,7 @@
     jl      pc, #right1@pc  ; This should make lr == s9
 
 wrong1:
-    CHECKEQ z, 1    ; False
+    FAIL
 
 right1:
     seq     s9, lr, s9
