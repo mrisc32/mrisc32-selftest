@@ -25,17 +25,54 @@
 
     BEGIN_TEST  test_j
 
-    ; TODO(m): Add more elaborate tests:
-    ; - Jump to pc with pc-relative offset (i.e. branch).
-    ; - Jump to register with offset (reg + 4, reg + 8, reg - 4, ...).
+    ; Set LR to a known value so that we can check that it's not modified.
+    ldi     lr, #123
 
-    add     s9, pc, #right1@pc
-    j       s9, #0
+    ; PC-relative (short)
+    j       pc, #right1@pc
 
 wrong1:
     FAIL
 
 right1:
+
+    ; PC-relative (long)
+    addpchi s9, #right2@pchi
+    j       s9, #right2+4@pclo
+
+wrong2:
+    FAIL
+
+right2:
+
+    ; Absolute (long)
+    ldhi    s9, #right3@hi
+    j       s9, #right3@lo
+
+wrong3:
+    FAIL
+
+right3:
+
+    ; Register-offset
+    addpchi s9, #jump_base@pchi
+    add     s9, s9, #jump_base+4@pclo
+    ldi     s10, #0
+    ldi     s11, #123
+    j       s9, #8
+
+jump_base:
+    add     s11, s10, #1
+    add     s10, s11, #1
+    add     s11, s10, #1    ; This is where we should land
+    add     s10, s11, #1
+    add     s11, s10, #1
+
+    CHECKEQ s11, 3
+
+
+    ; Check that LR was not modified.
+    CHECKEQ lr, 123
 
     END_TEST
 
