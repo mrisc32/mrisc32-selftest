@@ -98,7 +98,6 @@ LIBOBJS = \
   $(OUT)/test_stb.o \
   $(OUT)/test_sth.o \
   $(OUT)/test_stw.o \
-  $(OUT)/test_stwpc.o \
   $(OUT)/test_sub.o \
   $(OUT)/test_subh.o \
   $(OUT)/test_subhr.o \

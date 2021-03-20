@@ -217,7 +217,7 @@ tests:
     .word   test_bgt
 
     .word   test_ldwpc
-    .word   test_stwpc
+    ; Note: stwpc fails to link when BSS is too far from the code
     .word   test_addpchi
 
     .word   test_adds
