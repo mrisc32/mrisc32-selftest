@@ -25,7 +25,8 @@
 
     BEGIN_TEST  test_jl
 
-    add     s9, pc, #8
+    addpchi s9, #0
+    add     s9, s9, #12
     jl      pc, #right1@pc  ; This should make lr == s9
 
 wrong1:

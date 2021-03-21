@@ -26,16 +26,20 @@
     BEGIN_TEST  test_addpchi
 
     ; ADDPCHI can copy PC.
-    add     s9, pc, #4
-    addpchi s10, #0
-    seq     s10, s9, s10
+    ; We use JL as the second way to query the PC register value.
+    jl      pc, #1f@pc          ; This sets LR = PC + 4
+1:
+    addpchi s10, #0             ; This sets S10 = PC
+    seq     s10, s10, lr
     CHECKEQ s10, -1
 
     ; ADDPCHI is equal to pc + hi operand.
-    ldhi    s10, #0x12345000
-    add     s10, s10, #4
-    add     s9, pc, s10
+    ; Note: Instruction order and size is critical for the correct
+    ; calculation of PC.
+    ldi     s11, #0x12345000+4  ; Delta between ADDPCHI insns = +4
+    addpchi s9, #0
     addpchi s10, #0x12345000
+    add     s9, s9, s11
     seq     s10, s9, s10
     CHECKEQ s10, -1
 

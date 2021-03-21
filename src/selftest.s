@@ -100,7 +100,7 @@ done:
 selftest_prologue:
     ; This is called from BEGIN_TEST.
     ; Note: BEGIN_TEST has preserved LR in S1 before calling this function.
-    add     sp, sp, #-44
+    add     sp, sp, #-48
     stw     s16, sp, #0
     stw     s17, sp, #4
     stw     s18, sp, #8
@@ -111,10 +111,11 @@ selftest_prologue:
     stw     s23, sp, #28
     stw     s24, sp, #32
     stw     s25, sp, #36
-    stw     s1, sp, #40     ; Actually: S1 = LR for the test function.
+    stw     s26, sp, #40
+    stw     s1, sp, #44     ; Actually: S1 = LR for the test function.
 
-    ; s25 holds the test result (TRUE by default).
-    ldi     s25, #-1
+    ; s26 holds the test result (TRUE by default).
+    ldi     s26, #-1
 
     ; Return to the test
     ret
@@ -129,9 +130,9 @@ selftest_epilogue:
     ; This is sibling-called from END_TEST.
 
     ; Move the test result to s1 (the return value).
-    mov     s1, s25
+    mov     s1, s26
 
-    ; Restore s16-s25 & lr
+    ; Restore s16-s26 & lr
     ldw     s16, sp, #0
     ldw     s17, sp, #4
     ldw     s18, sp, #8
@@ -142,8 +143,9 @@ selftest_epilogue:
     ldw     s23, sp, #28
     ldw     s24, sp, #32
     ldw     s25, sp, #36
-    ldw     lr, sp, #40
-    add     sp, sp, #44
+    ldw     s26, sp, #40
+    ldw     lr, sp, #44
+    add     sp, sp, #48
 
     ; Return from the test
     ret

@@ -25,7 +25,8 @@
 
     BEGIN_TEST  test_ldb
 
-    add     s9, pc, #data@pc
+    addpchi s9, #data@pchi
+    add     s9, s9, #data+4@pclo
 
     ; Immediate offset.
     ldb     s11, s9, #0

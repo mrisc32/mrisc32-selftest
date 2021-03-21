@@ -25,7 +25,8 @@
 
     BEGIN_TEST  test_lduh
 
-    add     s9, pc, #data@pc
+    addpchi s9, #data@pchi
+    add     s9, s9, #data+4@pclo
 
     ; Immediate offset.
     lduh    s11, s9, #0
