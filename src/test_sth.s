@@ -29,39 +29,39 @@
     add     sp, sp, #-16
 
     ; Immediate offset.
-    ldi     s9, #0xf1234
-    sth     s9, sp, #0
-    ldi     s9, #0xf5678
-    sth     s9, sp, #2
-    ldw     s11, sp, #0
-    CHECKEQ s11, 0x56781234
+    ldi     r9, #0xf1234
+    sth     r9, sp, #0
+    ldi     r9, #0xf5678
+    sth     r9, sp, #2
+    ldw     r11, sp, #0
+    CHECKEQ r11, 0x56781234
 
     ; Register offset.
-    ldi     s9, #0xf8765
-    ldi     s10, #0
-    sth     s9, sp, s10
-    ldi     s9, #0xf4321
-    ldi     s10, #2
-    sth     s9, sp, s10
-    ldw     s11, sp, #0
-    CHECKEQ s11, 0x43218765
+    ldi     r9, #0xf8765
+    ldi     r10, #0
+    sth     r9, sp, r10
+    ldi     r9, #0xf4321
+    ldi     r10, #2
+    sth     r9, sp, r10
+    ldw     r11, sp, #0
+    CHECKEQ r11, 0x43218765
 
     ; Register offset with scale.
-    ldi     s10, #1
+    ldi     r10, #1
 
-    ldi     s9, #0xf8765
-    sth     s9, sp, s10*2
-    ldi     s9, #0xf4321
-    sth     s9, sp, s10*4
-    ldi     s9, #0xf9437
-    sth     s9, sp, s10*8
+    ldi     r9, #0xf8765
+    sth     r9, sp, r10*2
+    ldi     r9, #0xf4321
+    sth     r9, sp, r10*4
+    ldi     r9, #0xf9437
+    sth     r9, sp, r10*8
 
-    lduh    s11, sp, #2
-    CHECKEQ s11, 0x8765
-    lduh    s11, sp, #4
-    CHECKEQ s11, 0x4321
-    lduh    s11, sp, #8
-    CHECKEQ s11, 0x9437
+    lduh    r11, sp, #2
+    CHECKEQ r11, 0x8765
+    lduh    r11, sp, #4
+    CHECKEQ r11, 0x4321
+    lduh    r11, sp, #8
+    CHECKEQ r11, 0x9437
 
     ; Free stack space.
     add     sp, sp, #16

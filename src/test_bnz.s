@@ -25,30 +25,30 @@
 
     BEGIN_TEST  test_bnz
 
-    ldi     s9, #1      ; true
-    ldi     s10, #-1    ; true
-    ldi     s11, #0     ; false
+    ldi     r9, #1      ; true
+    ldi     r10, #-1    ; true
+    ldi     r11, #0     ; false
 
-    bnz     s9, right1
-    bnz     s11, wrong1
+    bnz     r9, right1
+    bnz     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    bnz     s10, right2
-    bnz     s11, wrong2
+    bnz     r10, right2
+    bnz     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    bnz     s11, wrong3
-    bnz     s9, right3
+    bnz     r11, wrong3
+    bnz     r9, right3
 wrong3:
     FAIL
 right3:
 
-    bnz     s11, wrong4
-    bnz     s10, right4
+    bnz     r11, wrong4
+    bnz     r10, right4
 wrong4:
     FAIL
 right4:

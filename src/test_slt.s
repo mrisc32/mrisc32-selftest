@@ -26,48 +26,48 @@
     BEGIN_TEST  test_slt
 
     ; Immediate operand.
-    ldi     s9, #123456
-    slt     s10, s9, #42
-    CHECKEQ s10, 0x00000000
+    ldi     r9, #123456
+    slt     r10, r9, #42
+    CHECKEQ r10, 0x00000000
 
-    ldi     s9, #42
-    slt     s10, s9, #42
-    CHECKEQ s10, 0x00000000
+    ldi     r9, #42
+    slt     r10, r9, #42
+    CHECKEQ r10, 0x00000000
 
-    ldi     s9, #41
-    slt     s10, s9, #42
-    CHECKEQ s10, 0xffffffff
+    ldi     r9, #41
+    slt     r10, r9, #42
+    CHECKEQ r10, 0xffffffff
 
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    slt     s11, s9, s10
-    CHECKEQ s11, 0x00000000
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    slt     r11, r9, r10
+    CHECKEQ r11, 0x00000000
 
-    ldi     s9, #123456
-    ldi     s10, #123456
-    slt     s11, s9, s10
-    CHECKEQ s11, 0x00000000
+    ldi     r9, #123456
+    ldi     r10, #123456
+    slt     r11, r9, r10
+    CHECKEQ r11, 0x00000000
 
-    ldi     s9, #-123456
-    ldi     s10, #123456
-    slt     s11, s9, s10
-    CHECKEQ s11, 0xffffffff
+    ldi     r9, #-123456
+    ldi     r10, #123456
+    slt     r11, r9, r10
+    CHECKEQ r11, 0xffffffff
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x12f4a697
-    ldi     s10, #0x1212a698
+    ldi     r9,  #0x12f4a697
+    ldi     r10, #0x1212a698
 
     ; Packed half-word.
-    slt.h   s11, s9, s10
-    CHECKEQ s11, 0x0000ffff
+    slt.h   r11, r9, r10
+    CHECKEQ r11, 0x0000ffff
 
     ; Packed byte.
-    slt.b   s11, s9, s10
-    CHECKEQ s11, 0x00ff00ff
+    slt.b   r11, r9, r10
+    CHECKEQ r11, 0x00ff00ff
 
 no_packed_ops:
 

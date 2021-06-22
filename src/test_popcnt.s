@@ -25,32 +25,32 @@
 
     BEGIN_TEST  test_popcnt
 
-    ldi     s9, #0x00000000
-    popcnt  s10, s9
-    CHECKEQ s10, 0
+    ldi     r9, #0x00000000
+    popcnt  r10, r9
+    CHECKEQ r10, 0
 
-    ldi     s9, #0x55555555
-    popcnt  s10, s9
-    CHECKEQ s10, 16
+    ldi     r9, #0x55555555
+    popcnt  r10, r9
+    CHECKEQ r10, 16
 
-    ldi     s9, #0xffffffff
-    popcnt  s10, s9
-    CHECKEQ s10, 32
+    ldi     r9, #0xffffffff
+    popcnt  r10, r9
+    CHECKEQ r10, 32
 
-    ldi     s9, #0x08153000
-    popcnt  s10, s9
-    CHECKEQ s10, 6
+    ldi     r9, #0x08153000
+    popcnt  r10, r9
+    CHECKEQ r10, 6
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ; s9 = 0x08153000
-    popcnt.h s10, s9
-    CHECKEQ s10, 0x00040002
+    ; r9 = 0x08153000
+    popcnt.h r10, r9
+    CHECKEQ r10, 0x00040002
 
-    ; s9 = 0x08153000
-    popcnt.b s10, s9
-    CHECKEQ s10, 0x01030200
+    ; r9 = 0x08153000
+    popcnt.b r10, r9
+    CHECKEQ r10, 0x01030200
 
 no_packed_ops:
 

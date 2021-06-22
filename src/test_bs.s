@@ -25,27 +25,27 @@
 
     BEGIN_TEST  test_bs
 
-    ldi     s9, #-1     ; true
-    ldi     s10, #0     ; false
-    ldi     s11, #1     ; false
+    ldi     r9, #-1     ; true
+    ldi     r10, #0     ; false
+    ldi     r11, #1     ; false
 
-    bs      s9, right1
-    bs      s10, wrong1
-    bs      s11, wrong1
+    bs      r9, right1
+    bs      r10, wrong1
+    bs      r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    bs      s10, wrong2
-    bs      s9, right2
-    bs      s11, wrong2
+    bs      r10, wrong2
+    bs      r9, right2
+    bs      r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    bs      s10, wrong3
-    bs      s11, wrong3
-    bs      s9, right3
+    bs      r10, wrong3
+    bs      r11, wrong3
+    bs      r9, right3
 wrong3:
     FAIL
 right3:

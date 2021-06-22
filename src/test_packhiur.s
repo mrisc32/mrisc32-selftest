@@ -28,19 +28,19 @@
     NOPO        no_packed_ops
     NOSA        no_saturating_ops
 
-    ldi         s9,  #0x87ff8f97
-    ldi         s10, #0x1f34567f
+    ldi         r9,  #0x87ff8f97
+    ldi         r10, #0x1f34567f
 
-    packhiur    s11, s9, s10
-    CHECKEQ     s11, 0x88001f34
+    packhiur    r11, r9, r10
+    CHECKEQ     r11, 0x88001f34
 
     ; packed half-word.
-    packhiur.h  s11, s9, s10
-    CHECKEQ     s11, 0x881f9056
+    packhiur.h  r11, r9, r10
+    CHECKEQ     r11, 0x881f9056
 
     ; packed byte.
-    packhiur.b  s11, s9, s10
-    CHECKEQ     s11, 0x82f39598
+    packhiur.b  r11, r9, r10
+    CHECKEQ     r11, 0x82f39598
 
 no_saturating_ops:
 no_packed_ops:

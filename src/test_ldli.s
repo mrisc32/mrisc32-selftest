@@ -26,12 +26,12 @@
     BEGIN_TEST  test_ldli
 
     ; Positive 20-bit word.
-    ldli    s9, #0x0fffff
-    CHECKEQ s9, 0x0fffff
+    ldli    r9, #0x0fffff
+    CHECKEQ r9, 0x0fffff
 
     ; Negative 21-bit word.
-    ldli    s9, #0xfff00000
-    CHECKEQ s9, 0xfff00000
+    ldli    r9, #0xfff00000
+    CHECKEQ r9, 0xfff00000
 
     END_TEST
 

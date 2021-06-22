@@ -28,31 +28,31 @@
     NOSA    no_saturating_ops
 
     ; Unsaturated should be the same as add.
-    ldi     s9, #1367
-    ldi     s10, #9926
-    addsu   s11, s9, s10
-    CHECKEQ s11, 11293
+    ldi     r9, #1367
+    ldi     r10, #9926
+    addsu   r11, r9, r10
+    CHECKEQ r11, 11293
 
     ; Saturate at max word.
-    ldhi    s9,  #0x7ffff000
-    ldhi    s10, #0x85432000
-    addsu   s11, s9, s10
-    CHECKEQ s11, 0xffffffff
+    ldhi    r9,  #0x7ffff000
+    ldhi    r10, #0x85432000
+    addsu   r11, r9, r10
+    CHECKEQ r11, 0xffffffff
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
     ; Packed half-word.
-    ldi     s9,  #0x12348471
-    ldi     s10, #0x43f17f72
-    addsu.h s11, s9, s10
-    CHECKEQ s11, 0x5625ffff
+    ldi     r9,  #0x12348471
+    ldi     r10, #0x43f17f72
+    addsu.h r11, r9, r10
+    CHECKEQ r11, 0x5625ffff
 
     ; Packed byte.
-    ldi     s9,  #0x12730185
-    ldi     s10, #0x3468ff81
-    addsu.b s11, s9, s10
-    CHECKEQ s11, 0x46dbffff
+    ldi     r9,  #0x12730185
+    ldi     r10, #0x3468ff81
+    addsu.b r11, r9, r10
+    CHECKEQ r11, 0x46dbffff
 
 no_packed_ops:
 no_saturating_ops:

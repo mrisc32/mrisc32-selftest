@@ -28,31 +28,31 @@
     NOSA    no_saturating_ops
 
     ; No rounding.
-    ldi     s9,  #0x7fffffff
-    ldi     s10, #0x65432124
-    subhu   s11, s9, s10
-    CHECKEQ s11, 0x0d5e6f6d
+    ldi     r9,  #0x7fffffff
+    ldi     r10, #0x65432124
+    subhu   r11, r9, r10
+    CHECKEQ r11, 0x0d5e6f6d
 
     ; Unsigned operands.
-    ldi     s9,  #0xffffff85  ; (-123)
-    ldi     s10, #0x0000007c  ; (124)
-    subhu   s11, s9, s10
-    CHECKEQ s11, 0x7fffff84
+    ldi     r9,  #0xffffff85  ; (-123)
+    ldi     r10, #0x0000007c  ; (124)
+    subhu   r11, r9, r10
+    CHECKEQ r11, 0x7fffff84
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
     ; Packed half-word.
-    ldi     s9,  #0x71238471
-    ldi     s10, #0x81727999
-    subhu.h s11, s9, s10
-    CHECKEQ s11, 0xf7d8056c
+    ldi     r9,  #0x71238471
+    ldi     r10, #0x81727999
+    subhu.h r11, r9, r10
+    CHECKEQ r11, 0xf7d8056c
 
     ; Packed byte.
-    ldi     s9,  #0x13700185
-    ldi     s10, #0x3468ff81
-    subhu.b s11, s9, s10
-    CHECKEQ s11, 0xef048102
+    ldi     r9,  #0x13700185
+    ldi     r10, #0x3468ff81
+    subhu.b r11, r9, r10
+    CHECKEQ r11, 0xef048102
 
 no_packed_ops:
 no_saturating_ops:

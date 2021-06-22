@@ -25,33 +25,33 @@
 
     BEGIN_TEST  test_clz
 
-    ldi     s9, #0x00000000
-    clz     s10, s9
-    CHECKEQ s10, 32
+    ldi     r9, #0x00000000
+    clz     r10, r9
+    CHECKEQ r10, 32
 
-    ldi     s9, #0x00000001
-    clz     s10, s9
-    CHECKEQ s10, 31
+    ldi     r9, #0x00000001
+    clz     r10, r9
+    CHECKEQ r10, 31
 
-    ldi     s9, #0x00000002
-    clz     s10, s9
-    CHECKEQ s10, 30
+    ldi     r9, #0x00000002
+    clz     r10, r9
+    CHECKEQ r10, 30
 
-    ldi     s9, #0x00008153
-    clz     s10, s9
-    CHECKEQ s10, 16
+    ldi     r9, #0x00008153
+    clz     r10, r9
+    CHECKEQ r10, 16
 
-    ldi     s9, #0x08153000
-    clz     s10, s9
-    CHECKEQ s10, 4
+    ldi     r9, #0x08153000
+    clz     r10, r9
+    CHECKEQ r10, 4
 
-    ldi     s9, #0x7e7df000
-    clz     s10, s9
-    CHECKEQ s10, 1
+    ldi     r9, #0x7e7df000
+    clz     r10, r9
+    CHECKEQ r10, 1
 
-    ldi     s9, #-1
-    clz     s10, s9
-    CHECKEQ s10, 0
+    ldi     r9, #-1
+    clz     r10, r9
+    CHECKEQ r10, 0
 
     END_TEST
 

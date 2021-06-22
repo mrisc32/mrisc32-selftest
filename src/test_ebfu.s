@@ -26,40 +26,40 @@
     BEGIN_TEST  test_ebfu
 
     ; Immediate operand.
-    ldi     s9, #123456
-    ebfu    s10, s9, #3         ; Pure shift.
-    CHECKEQ s10, 15432
+    ldi     r9, #123456
+    ebfu    r10, r9, #3         ; Pure shift.
+    CHECKEQ r10, 15432
 
-    ldi     s9, #-41
-    ebfu    s10, s9, #(7<<5)|3  ; Width and shift.
-    CHECKEQ s10, 0x0000007a
+    ldi     r9, #-41
+    ebfu    r10, r9, #(7<<5)|3  ; Width and shift.
+    CHECKEQ r10, 0x0000007a
 
 
     ; Register operands.
-    ldi     s9, #0x23456
-    ldi     s10, #5
-    ebfu    s11, s9, s10
-    CHECKEQ s11, 0x11a2
+    ldi     r9, #0x23456
+    ldi     r10, #5
+    ebfu    r11, r9, r10
+    CHECKEQ r11, 0x11a2
 
-    ldi     s9, #0xa9875000
-    ldi     s10, #17
-    ebfu    s11, s9, s10
-    CHECKEQ s11, 0x000054c3
+    ldi     r9, #0xa9875000
+    ldi     r10, #17
+    ebfu    r11, r9, r10
+    CHECKEQ r11, 0x000054c3
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x1289ab78
-    ldi     s10, #0x0062000a
-    ldi     s11, #0x11020304
+    ldi     r9,  #0x1289ab78
+    ldi     r10, #0x0062000a
+    ldi     r11, #0x11020304
 
     ; Packed half-word.
-    ebfu.h  s12, s9, s10
-    CHECKEQ s12, 0x0022002a
+    ebfu.h  r12, r9, r10
+    CHECKEQ r12, 0x0022002a
 
     ; Packed byte.
-    ebfu.b   s12, s9, s11
-    CHECKEQ s12, 0x01221507
+    ebfu.b   r12, r9, r11
+    CHECKEQ r12, 0x01221507
 
 no_packed_ops:
 

@@ -28,43 +28,43 @@
     NOSA    no_saturating_ops
 
     ; Unsaturated should be the same as sub.
-    ldi     s9, #1367
-    ldi     s10, #9926
-    subs    s11, s9, s10
-    CHECKEQ s11, -8559
+    ldi     r9, #1367
+    ldi     r10, #9926
+    subs    r11, r9, r10
+    CHECKEQ r11, -8559
 
     ; Saturate at max word.
-    ldi     s9,  #0x7ffff000
-    ldi     s10, #0x83541000
-    subs    s11, s9, s10
-    CHECKEQ s11, 0x7fffffff
+    ldi     r9,  #0x7ffff000
+    ldi     r10, #0x83541000
+    subs    r11, r9, r10
+    CHECKEQ r11, 0x7fffffff
 
     ; Saturate at min word.
-    ldi     s9,  #0x81234000
-    ldi     s10, #0x05432000
-    subs    s11, s9, s10
-    CHECKEQ s11, 0x80000000
+    ldi     r9,  #0x81234000
+    ldi     r10, #0x05432000
+    subs    r11, r9, r10
+    CHECKEQ r11, 0x80000000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
     ; Packed half-word: unsaturated.
-    ldi     s9,  #0x12340071
-    ldi     s10, #0x43f10072
-    subs.h  s11, s9, s10
-    CHECKEQ s11, 0xce43ffff
+    ldi     r9,  #0x12340071
+    ldi     r10, #0x43f10072
+    subs.h  r11, r9, r10
+    CHECKEQ r11, 0xce43ffff
 
     ; Packed half-word: saturated.
-    ldi     s9,  #0x71238471
-    ldi     s10, #0x81727999
-    subs.h  s11, s9, s10
-    CHECKEQ s11, 0x7fff8000
+    ldi     r9,  #0x71238471
+    ldi     r10, #0x81727999
+    subs.h  r11, r9, r10
+    CHECKEQ r11, 0x7fff8000
 
     ; Packed byte.
-    ldi     s9,  #0x12700185
-    ldi     s10, #0x3498ff71
-    subs.b  s11, s9, s10
-    CHECKEQ s11, 0xde7f0280
+    ldi     r9,  #0x12700185
+    ldi     r10, #0x3498ff71
+    subs.b  r11, r9, r10
+    CHECKEQ r11, 0xde7f0280
 
 no_packed_ops:
 no_saturating_ops:

@@ -26,44 +26,44 @@
     BEGIN_TEST  test_mulq
 
     ; Positive values.
-    ldi     s9, #0x39431365
-    ldi     s10, #0x65432137
-    mulq    s11, s9, s10
-    CHECKEQ s11, 0x2d4cf545
+    ldi     r9, #0x39431365
+    ldi     r10, #0x65432137
+    mulq    r11, r9, r10
+    CHECKEQ r11, 0x2d4cf545
 
     ; Negative result.
-    ldi     s9, #0x39431365
-    ldi     s10, #0xe5432137
-    mulq    s11, s9, s10
-    CHECKEQ s11, 0xf409e1e0
+    ldi     r9, #0x39431365
+    ldi     r10, #0xe5432137
+    mulq    r11, r9, r10
+    CHECKEQ r11, 0xf409e1e0
 
     ; Saturating negative values 1.
-    ldi     s9, #0x80000000
-    ldi     s10, #0x80000000
-    mulq    s11, s9, s10
-    CHECKEQ s11, 0x7fffffff
+    ldi     r9, #0x80000000
+    ldi     r10, #0x80000000
+    mulq    r11, r9, r10
+    CHECKEQ r11, 0x7fffffff
 
     ; "Saturating" negative values 2.
-    ldi     s9, #0x80000000
-    ldi     s10, #0x80000001
-    mulq    s11, s9, s10
-    CHECKEQ s11, 0x7fffffff
-    mulq    s11, s10, s9
-    CHECKEQ s11, 0x7fffffff
+    ldi     r9, #0x80000000
+    ldi     r10, #0x80000001
+    mulq    r11, r9, r10
+    CHECKEQ r11, 0x7fffffff
+    mulq    r11, r10, r9
+    CHECKEQ r11, 0x7fffffff
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9, #0x1234a698
-    ldi     s10, #0xa7ef83a3
+    ldi     r9, #0x1234a698
+    ldi     r10, #0xa7ef83a3
 
     ; Packed half-word.
-    mulq.h  s11, s9, s10
-    CHECKEQ s11, 0xf37956dd
+    mulq.h  r11, r9, r10
+    CHECKEQ r11, 0xf37956dd
 
     ; Packed byte.
-    mulq.b  s11, s9, s10
-    CHECKEQ s11, 0xf3f9574b
+    mulq.b  r11, r9, r10
+    CHECKEQ r11, 0xf3f9574b
 
 no_packed_ops:
 

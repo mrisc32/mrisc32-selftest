@@ -28,31 +28,31 @@
     NOSA    no_saturating_ops
 
     ; Unsaturated should be the same as sub.
-    ldi     s9, #9926
-    ldi     s10, #1367
-    subsu   s11, s9, s10
-    CHECKEQ s11, 8559
+    ldi     r9, #9926
+    ldi     r10, #1367
+    subsu   r11, r9, r10
+    CHECKEQ r11, 8559
 
     ; Saturate at min word.
-    ldi     s9, #0x05432000
-    ldi     s10,  #0x81234000
-    subsu   s11, s9, s10
-    CHECKEQ s11, 0x00000000
+    ldi     r9, #0x05432000
+    ldi     r10,  #0x81234000
+    subsu   r11, r9, r10
+    CHECKEQ r11, 0x00000000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
     ; Packed half-word.
-    ldi     s9,  #0x7123f471
-    ldi     s10, #0x81727999
-    subsu.h s11, s9, s10
-    CHECKEQ s11, 0x00007ad8
+    ldi     r9,  #0x7123f471
+    ldi     r10, #0x81727999
+    subsu.h r11, r9, r10
+    CHECKEQ r11, 0x00007ad8
 
     ; Packed byte.
-    ldi     s9,  #0x1298f085
-    ldi     s10, #0x3470ff71
-    subsu.b s11, s9, s10
-    CHECKEQ s11, 0x00280014
+    ldi     r9,  #0x1298f085
+    ldi     r10, #0x3470ff71
+    subsu.b r11, r9, r10
+    CHECKEQ r11, 0x00280014
 
 no_packed_ops:
 no_saturating_ops:

@@ -29,36 +29,36 @@
     add     sp, sp, #-16
 
     ; Immediate offset.
-    ldi     s9, #-546546
-    stw     s9, sp, #4
-    ldw     s11, sp, #4
-    CHECKEQ s11, -546546
+    ldi     r9, #-546546
+    stw     r9, sp, #4
+    ldw     r11, sp, #4
+    CHECKEQ r11, -546546
 
     ; Register offset.
-    ldi     s9, #-546546
-    ldi     s10, #8
-    stw     s9, sp, s10
-    ldw     s11, sp, #8
-    CHECKEQ s11, -546546
+    ldi     r9, #-546546
+    ldi     r10, #8
+    stw     r9, sp, r10
+    ldw     r11, sp, #8
+    CHECKEQ r11, -546546
 
     ; Register offset with scale.
-    ldi     s9, #546546
-    ldi     s10, #2
-    stw     s9, sp, s10*2
-    ldw     s11, sp, #4
-    CHECKEQ s11, 546546
+    ldi     r9, #546546
+    ldi     r10, #2
+    stw     r9, sp, r10*2
+    ldw     r11, sp, #4
+    CHECKEQ r11, 546546
 
-    ldi     s9, #546545
-    ldi     s10, #1
-    stw     s9, sp, s10*4
-    ldw     s11, sp, #4
-    CHECKEQ s11, 546545
+    ldi     r9, #546545
+    ldi     r10, #1
+    stw     r9, sp, r10*4
+    ldw     r11, sp, #4
+    CHECKEQ r11, 546545
 
-    ldi     s9, #546544
-    ldi     s10, #1
-    stw     s9, sp, s10*8
-    ldw     s11, sp, #8
-    CHECKEQ s11, 546544
+    ldi     r9, #546544
+    ldi     r10, #1
+    stw     r9, sp, r10*8
+    ldw     r11, sp, #8
+    CHECKEQ r11, 546544
 
     ; Free stack space.
     add     sp, sp, #16

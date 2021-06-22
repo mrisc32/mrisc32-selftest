@@ -25,38 +25,38 @@
 
     BEGIN_TEST  test_lduh
 
-    addpchi s9, #data@pchi
-    add     s9, s9, #data+4@pclo
+    addpchi r9, #data@pchi
+    add     r9, r9, #data+4@pclo
 
     ; Immediate offset.
-    lduh    s11, s9, #0
-    CHECKEQ s11, 1
+    lduh    r11, r9, #0
+    CHECKEQ r11, 1
 
-    lduh    s11, s9, #4
-    CHECKEQ s11, 3
+    lduh    r11, r9, #4
+    CHECKEQ r11, 3
 
-    lduh    s11, s9, #6
-    CHECKEQ s11, 0x0000fffc
+    lduh    r11, r9, #6
+    CHECKEQ r11, 0x0000fffc
 
     ; Register offset.
-    lduh    s11, s9, z
-    CHECKEQ s11, 1
+    lduh    r11, r9, z
+    CHECKEQ r11, 1
 
-    ldi     s10, #7*2
-    lduh    s11, s9, s10
-    CHECKEQ s11, 0x0000fff8
+    ldi     r10, #7*2
+    lduh    r11, r9, r10
+    CHECKEQ r11, 0x0000fff8
 
     ; Register offset with scale.
-    ldi     s10, #1
+    ldi     r10, #1
 
-    lduh    s11, s9, s10*2
-    CHECKEQ s11, 0x0000fffe
+    lduh    r11, r9, r10*2
+    CHECKEQ r11, 0x0000fffe
 
-    lduh    s11, s9, s10*4
-    CHECKEQ s11, 3
+    lduh    r11, r9, r10*4
+    CHECKEQ r11, 3
 
-    lduh    s11, s9, s10*8
-    CHECKEQ s11, 5
+    lduh    r11, r9, r10*8
+    CHECKEQ r11, 5
 
     END_TEST
 

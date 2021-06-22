@@ -26,21 +26,21 @@
     BEGIN_TEST  test_or
 
     ; Immediate operand.
-    ldi     s9, #0x00023456
-    or      s10, s9, #0x00000f55
-    CHECKEQ s10, 0x00023f57
+    ldi     r9, #0x00023456
+    or      r10, r9, #0x00000f55
+    CHECKEQ r10, 0x00023f57
 
     ; Register operands.
-    ldi     s9, #0x00023456    ; Neg: 0xfffdcba9
-    ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
-    or      s11, s9, s10
-    CHECKEQ s11, 0xffff3456
-    or.pn   s11, s9, s10
-    CHECKEQ s11, 0x0002ffff
-    or.np   s11, s9, s10
-    CHECKEQ s11, 0xffffcba9
-    or.nn   s11, s9, s10
-    CHECKEQ s11, 0xfffdffff
+    ldi     r9, #0x00023456    ; Neg: 0xfffdcba9
+    ldi     r10, #0xffff0000   ; Neg: 0x0000ffff
+    or      r11, r9, r10
+    CHECKEQ r11, 0xffff3456
+    or.pn   r11, r9, r10
+    CHECKEQ r11, 0x0002ffff
+    or.np   r11, r9, r10
+    CHECKEQ r11, 0xffffcba9
+    or.nn   r11, r9, r10
+    CHECKEQ r11, 0xfffdffff
 
     END_TEST
 

@@ -28,23 +28,23 @@
     NOPO    no_packed_ops
     NOSA    no_saturating_ops
 
-    ldi     s9,  #0x87654321
-    ldi     s10, #0x00005678
-    packs   s13, s9, s10
-    CHECKEQ s13, 0x80005678
+    ldi     r9,  #0x87654321
+    ldi     r10, #0x00005678
+    packs   r13, r9, r10
+    CHECKEQ r13, 0x80005678
 
-    ldi     s11, #0x00004321
-    ldi     s12, #0x12345678
-    packs   s13, s11, s12
-    CHECKEQ s13, 0x43217fff
+    ldi     r11, #0x00004321
+    ldi     r12, #0x12345678
+    packs   r13, r11, r12
+    CHECKEQ r13, 0x43217fff
 
     ; Packed half-word.
-    packs.h s11, s9, s10
-    CHECKEQ s11, 0x80007f7f
+    packs.h r11, r9, r10
+    CHECKEQ r11, 0x80007f7f
 
     ; Packed byte.
-    packs.b s11, s9, s10
-    CHECKEQ s11, 0x80707777
+    packs.b r11, r9, r10
+    CHECKEQ r11, 0x80707777
 
 no_saturating_ops:
 no_packed_ops:

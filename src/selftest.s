@@ -28,7 +28,7 @@
 ;
 ; int selftest_run(test_result_fun_t test_result_fun);
 ;
-;  s1 = test_result_fun
+;  r1 = test_result_fun
 ;-----------------------------------------------------------------------------
 
     .p2align 2
@@ -38,51 +38,51 @@
 selftest_run:
     add     sp, sp, #-20
     stw     lr, sp, #0
-    stw     s16, sp, #4
-    stw     s17, sp, #8
-    stw     s18, sp, #12
-    stw     s19, sp, #16
+    stw     r16, sp, #4
+    stw     r17, sp, #8
+    stw     r18, sp, #12
+    stw     r19, sp, #16
 
-    ; s16 = Pointer to the list of tests.
-    addpchi s16, #tests@pchi
-    add     s16, s16, #tests+4@pclo
+    ; r16 = Pointer to the list of tests.
+    addpchi r16, #tests@pchi
+    add     r16, r16, #tests+4@pclo
 
-    ; s17 = Total test result.
-    ldi     s17, #-1
+    ; r17 = Total test result.
+    ldi     r17, #-1
 
-    ; s18 = test_result_fun
-    mov     s18, s1
+    ; r18 = test_result_fun
+    mov     r18, r1
 
-    ; s19 = test_no
-    ldi     s19, #0
+    ; r19 = test_no
+    ldi     r19, #0
 
 loop:
-    ldw     s1, s16, s19*4  ; Load the next test
-    bz      s1, done        ; (exit when there are no more tests)
+    ldw     r1, r16, r19*4  ; Load the next test
+    bz      r1, done        ; (exit when there are no more tests)
 
     ; Call the test function.
-    jl      s1
-    and     s17, s17, s1    ; Update the total test result
+    jl      r1
+    and     r17, r17, r1    ; Update the total test result
 
     ; Call the test result function.
-    ;  s1 = test result (pass/fail)
-    ;  s2 = test number
-    bz      s18, no_callback
-    mov     s2, s19
-    jl      s18
+    ;  r1 = test result (pass/fail)
+    ;  r2 = test number
+    bz      r18, no_callback
+    mov     r2, r19
+    jl      r18
 
 no_callback:
-    add     s19, s19, #1
+    add     r19, r19, #1
     b       loop
 
 done:
-    mov     s1, s17         ; Return the total test result
+    mov     r1, r17         ; Return the total test result
 
     ldw     lr, sp, #0
-    ldw     s16, sp, #4
-    ldw     s17, sp, #8
-    ldw     s18, sp, #12
-    ldw     s19, sp, #16
+    ldw     r16, sp, #4
+    ldw     r17, sp, #8
+    ldw     r18, sp, #12
+    ldw     r19, sp, #16
     add     sp, sp, #20
     ret
 
@@ -99,23 +99,23 @@ done:
 
 selftest_prologue:
     ; This is called from BEGIN_TEST.
-    ; Note: BEGIN_TEST has preserved LR in S1 before calling this function.
+    ; Note: BEGIN_TEST has preserved LR in R1 before calling this function.
     add     sp, sp, #-48
-    stw     s16, sp, #0
-    stw     s17, sp, #4
-    stw     s18, sp, #8
-    stw     s19, sp, #12
-    stw     s20, sp, #16
-    stw     s21, sp, #20
-    stw     s22, sp, #24
-    stw     s23, sp, #28
-    stw     s24, sp, #32
-    stw     s25, sp, #36
-    stw     s26, sp, #40
-    stw     s1, sp, #44     ; Actually: S1 = LR for the test function.
+    stw     r16, sp, #0
+    stw     r17, sp, #4
+    stw     r18, sp, #8
+    stw     r19, sp, #12
+    stw     r20, sp, #16
+    stw     r21, sp, #20
+    stw     r22, sp, #24
+    stw     r23, sp, #28
+    stw     r24, sp, #32
+    stw     r25, sp, #36
+    stw     r26, sp, #40
+    stw     r1, sp, #44     ; Actually: R1 = LR for the test function.
 
-    ; s26 holds the test result (TRUE by default).
-    ldi     s26, #-1
+    ; r26 holds the test result (TRUE by default).
+    ldi     r26, #-1
 
     ; Return to the test
     ret
@@ -129,21 +129,21 @@ selftest_prologue:
 selftest_epilogue:
     ; This is sibling-called from END_TEST.
 
-    ; Move the test result to s1 (the return value).
-    mov     s1, s26
+    ; Move the test result to r1 (the return value).
+    mov     r1, r26
 
-    ; Restore s16-s26 & lr
-    ldw     s16, sp, #0
-    ldw     s17, sp, #4
-    ldw     s18, sp, #8
-    ldw     s19, sp, #12
-    ldw     s20, sp, #16
-    ldw     s21, sp, #20
-    ldw     s22, sp, #24
-    ldw     s23, sp, #28
-    ldw     s24, sp, #32
-    ldw     s25, sp, #36
-    ldw     s26, sp, #40
+    ; Restore r16-r26 & lr
+    ldw     r16, sp, #0
+    ldw     r17, sp, #4
+    ldw     r18, sp, #8
+    ldw     r19, sp, #12
+    ldw     r20, sp, #16
+    ldw     r21, sp, #20
+    ldw     r22, sp, #24
+    ldw     r23, sp, #28
+    ldw     r24, sp, #32
+    ldw     r25, sp, #36
+    ldw     r26, sp, #40
     ldw     lr, sp, #44
     add     sp, sp, #48
 

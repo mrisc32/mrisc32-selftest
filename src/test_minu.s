@@ -26,39 +26,39 @@
     BEGIN_TEST  test_minu
 
     ; Immediate operand.
-    ldi     s9, #123456
-    minu    s10, s9, #42
-    CHECKEQ s10, 42
+    ldi     r9, #123456
+    minu    r10, r9, #42
+    CHECKEQ r10, 42
 
-    ldi     s9, #-41
-    minu    s10, s9, #42
-    CHECKEQ s10, 42
+    ldi     r9, #-41
+    minu    r10, r9, #42
+    CHECKEQ r10, 42
 
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    minu    s11, s9, s10
-    CHECKEQ s11, 123456
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    minu    r11, r9, r10
+    CHECKEQ r11, 123456
 
-    ldi     s9, #-123456
-    ldi     s10, #123456
-    minu    s11, s9, s10
-    CHECKEQ s11, 123456
+    ldi     r9, #-123456
+    ldi     r10, #123456
+    minu    r11, r9, r10
+    CHECKEQ r11, 123456
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x12f4a607
-    ldi     s10, #0x11125698
+    ldi     r9,  #0x12f4a607
+    ldi     r10, #0x11125698
 
     ; Packed half-word.
-    minu.h  s11, s9, s10
-    CHECKEQ s11, 0x11125698
+    minu.h  r11, r9, r10
+    CHECKEQ r11, 0x11125698
 
     ; Packed byte.
-    minu.b  s11, s9, s10
-    CHECKEQ s11, 0x11125607
+    minu.b  r11, r9, r10
+    CHECKEQ r11, 0x11125607
 
 no_packed_ops:
 

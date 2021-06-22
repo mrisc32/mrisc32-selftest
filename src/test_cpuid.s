@@ -30,42 +30,42 @@
     ;-------------------------------------------------------------------------
 
     ; Expected minimum value for max vector length.
-    ;  s12 <- minimum max vector length
-    ;  s13 <- minimum log2(max vector length)
-    ;  s14 <- maximum max vector length
-    ;  s15 <- maximum log2(max vector length)
-    ldi     s12, #0
-    ldi     s13, #0
-    ldi     s14, #0
-    ldi     s15, #0
+    ;  r12 <- minimum max vector length
+    ;  r13 <- minimum log2(max vector length)
+    ;  r14 <- maximum max vector length
+    ;  r15 <- maximum log2(max vector length)
+    ldi     r12, #0
+    ldi     r13, #0
+    ldi     r14, #0
+    ldi     r15, #0
     NOVEC   1f
-    ldi     s12, #16            ; The minimum vector register length is 16
-    ldi     s13, #4
-    ldi     s14, #0xffffffff
-    ldi     s15, #31
+    ldi     r12, #16            ; The minimum vector register length is 16
+    ldi     r13, #4
+    ldi     r14, #0xffffffff
+    ldi     r15, #31
 1:
 
     ; 0x00000000:0x00000000 -> MaxVectorLength
-    ldi     s9, #0x00000000
-    ldi     s10, #0x00000000
-    cpuid   s11, s9, s10
+    ldi     r9, #0x00000000
+    ldi     r10, #0x00000000
+    cpuid   r11, r9, r10
 
     ; Make sure that MaxVectorLength is within the valid range.
-    sleu    s9, s12, s11
-    CHECKEQ s9, 0xffffffff
-    sleu    s9, s11, s14
-    CHECKEQ s9, 0xffffffff
+    sleu    r9, r12, r11
+    CHECKEQ r9, 0xffffffff
+    sleu    r9, r11, r14
+    CHECKEQ r9, 0xffffffff
 
     ; 0x00000000:0x00000001 -> Log2MaxVectorLength
-    ldi     s9, #0x00000000
-    ldi     s10, #0x00000001
-    cpuid   s11, s9, s10
+    ldi     r9, #0x00000000
+    ldi     r10, #0x00000001
+    cpuid   r11, r9, r10
 
     ; Make sure that Log2MaxVectorLength is within the valid range.
-    sleu    s9, s13, s11
-    CHECKEQ s9, 0xffffffff
-    sleu    s9, s11, s15
-    CHECKEQ s9, 0xffffffff
+    sleu    r9, r13, r11
+    CHECKEQ r9, 0xffffffff
+    sleu    r9, r11, r15
+    CHECKEQ r9, 0xffffffff
 
 
     ;-------------------------------------------------------------------------
@@ -73,14 +73,14 @@
     ;-------------------------------------------------------------------------
 
     ; 0x00000001:0x00000000 -> BaseFeatures
-    ldi     s9, #0x00000001
-    ldi     s10, #0x00000000
-    cpuid   s11, s9, s10
+    ldi     r9, #0x00000001
+    ldi     r10, #0x00000000
+    cpuid   r11, r9, r10
 
     ; Make sure that the upper bits are all zero (only the lower 7 bits have
     ; meaning).
-    and     s12, s11, #~0x0000007f
-    CHECKEQ s12, 0
+    and     r12, r11, #~0x0000007f
+    CHECKEQ r12, 0
 
 
     ;-------------------------------------------------------------------------
@@ -89,24 +89,24 @@
 
     ; Make a few samples (checking all possibilities would take too long, and
     ; would flood debug traces).
-    ldi     s9, #0x00000002
+    ldi     r9, #0x00000002
 1:
-    ldi     s10, #0x00000000
+    ldi     r10, #0x00000000
 2:
-    cpuid   s11, s9, s10
-    CHECKEQ s11, 0
+    cpuid   r11, r9, r10
+    CHECKEQ r11, 0
 
-    lsl     s11, s9, #15
-    lsl     s12, s10, #9
-    cpuid   s11, s11, s12
-    CHECKEQ s11, 0
+    lsl     r11, r9, #15
+    lsl     r12, r10, #9
+    cpuid   r11, r11, r12
+    CHECKEQ r11, 0
 
-    add     s10, s10, #1
-    sle     s11, s10, #3
-    bs      s11, 2b
-    add     s9, s9, #1
-    sle     s11, s9, #5
-    bs      s11, 1b
+    add     r10, r10, #1
+    sle     r11, r10, #3
+    bs      r11, 2b
+    add     r9, r9, #1
+    sle     r11, r9, #5
+    bs      r11, 1b
 
     END_TEST
 

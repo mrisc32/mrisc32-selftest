@@ -25,38 +25,38 @@
 
     BEGIN_TEST  test_ldw
 
-    addpchi s9, #data@pchi
-    add     s9, s9, #data+4@pclo
+    addpchi r9, #data@pchi
+    add     r9, r9, #data+4@pclo
 
     ; Immediate offset.
-    ldw     s11, s9, #0
-    CHECKEQ s11, 1
+    ldw     r11, r9, #0
+    CHECKEQ r11, 1
 
-    ldw     s11, s9, #8
-    CHECKEQ s11, 3
+    ldw     r11, r9, #8
+    CHECKEQ r11, 3
 
-    ldw     s11, s9, #12
-    CHECKEQ s11, -4
+    ldw     r11, r9, #12
+    CHECKEQ r11, -4
 
     ; Register offset.
-    ldw     s11, s9, z
-    CHECKEQ s11, 1
+    ldw     r11, r9, z
+    CHECKEQ r11, 1
 
-    ldi     s10, #7*4
-    ldw     s11, s9, s10
-    CHECKEQ s11, -8
+    ldi     r10, #7*4
+    ldw     r11, r9, r10
+    CHECKEQ r11, -8
 
     ; Register offset with scale.
-    ldi     s10, #2
+    ldi     r10, #2
 
-    ldw     s11, s9, s10*2
-    CHECKEQ s11, -2
+    ldw     r11, r9, r10*2
+    CHECKEQ r11, -2
 
-    ldw     s11, s9, s10*4
-    CHECKEQ s11, 3
+    ldw     r11, r9, r10*4
+    CHECKEQ r11, 3
 
-    ldw     s11, s9, s10*8
-    CHECKEQ s11, 5
+    ldw     r11, r9, r10*8
+    CHECKEQ r11, 5
 
     END_TEST
 

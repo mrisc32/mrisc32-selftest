@@ -26,31 +26,31 @@
     BEGIN_TEST  test_sel
 
     ; Immediate operand.
-    ldi     s9,  #0x0f0ff0f0
-    ldi     s10, #0x12345678
+    ldi     r9,  #0x0f0ff0f0
+    ldi     r10, #0x12345678
 
-    mov     s12, s9
-    sel     s12, s10, #0x1234
-    CHECKEQ s12, 0x02045274
+    mov     r12, r9
+    sel     r12, r10, #0x1234
+    CHECKEQ r12, 0x02045274
 
     ; Register operands.
-    ldi     s11, #0x9abcdef0
+    ldi     r11, #0x9abcdef0
 
-    mov     s12, s9
-    sel     s12, s10, s11
-    CHECKEQ s12, 0x92b45e70
+    mov     r12, r9
+    sel     r12, r10, r11
+    CHECKEQ r12, 0x92b45e70
 
-    mov     s12, s9
-    sel.132 s12, s10, s11
-    CHECKEQ s12, 0x1a3cd6f8
+    mov     r12, r9
+    sel.132 r12, r10, r11
+    CHECKEQ r12, 0x1a3cd6f8
 
-    mov     s12, s10
-    sel.213 s12, s9, s11
-    CHECKEQ s12, 0x92b45e70
+    mov     r12, r10
+    sel.213 r12, r9, r11
+    CHECKEQ r12, 0x92b45e70
 
-    mov     s12, s10
-    sel.231 s12, s9, s11
-    CHECKEQ s12, 0x1a3cd6f8
+    mov     r12, r10
+    sel.231 r12, r9, r11
+    CHECKEQ r12, 0x1a3cd6f8
 
     END_TEST
 

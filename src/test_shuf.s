@@ -26,30 +26,30 @@
     BEGIN_TEST  test_shuf
 
     ; Immediate operand.
-    ldi     s9, #0x12ab8234
+    ldi     r9, #0x12ab8234
 
-    shuf    s10, s9, #0b0000000000000
-    CHECKEQ s10, 0x34343434
+    shuf    r10, r9, #0b0000000000000
+    CHECKEQ r10, 0x34343434
 
-    shuf    s10, s9, #0b0000001010011
-    CHECKEQ s10, 0x3482ab12
+    shuf    r10, r9, #0b0000001010011
+    CHECKEQ r10, 0x3482ab12
 
-    shuf    s10, s9, #0b1101101001000
-    CHECKEQ s10, 0xffff8234
+    shuf    r10, r9, #0b1101101001000
+    CHECKEQ r10, 0xffff8234
 
-    shuf    s10, s9, #0b0101101001000
-    CHECKEQ s10, 0x00008234
+    shuf    r10, r9, #0b0101101001000
+    CHECKEQ r10, 0x00008234
 
     ; Register operands.
-    ldi     s9, #0x8012
-    ldi     s10, #0b1101101001000
-    shuf    s11, s9, s10
-    CHECKEQ s11, 0xffff8012
+    ldi     r9, #0x8012
+    ldi     r10, #0b1101101001000
+    shuf    r11, r9, r10
+    CHECKEQ r11, 0xffff8012
 
-    ldi     s9, #0x11223344
-    ldi     s10, #0b0000011010001
-    shuf    s11, s9, s10
-    CHECKEQ s11, 0x44112233
+    ldi     r9, #0x11223344
+    ldi     r10, #0b0000011010001
+    shuf    r11, r9, r10
+    CHECKEQ r11, 0x44112233
 
     END_TEST
 

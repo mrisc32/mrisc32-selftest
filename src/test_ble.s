@@ -25,30 +25,30 @@
 
     BEGIN_TEST  test_ble
 
-    ldi     s9, #-42    ; true
-    ldi     s10, #0     ; true
-    ldi     s11, #42    ; false
+    ldi     r9, #-42    ; true
+    ldi     r10, #0     ; true
+    ldi     r11, #42    ; false
 
-    ble     s9, right1
-    ble     s11, wrong1
+    ble     r9, right1
+    ble     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    ble     s10, right2
-    ble     s11, wrong2
+    ble     r10, right2
+    ble     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    ble     s11, wrong3
-    ble     s9, right3
+    ble     r11, wrong3
+    ble     r9, right3
 wrong3:
     FAIL
 right3:
 
-    ble     s11, wrong4
-    ble     s10, right4
+    ble     r11, wrong4
+    ble     r10, right4
 wrong4:
     FAIL
 right4:

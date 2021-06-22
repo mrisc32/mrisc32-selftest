@@ -25,30 +25,30 @@
 
     BEGIN_TEST  test_bge
 
-    ldi     s9, #42     ; true
-    ldi     s10, #0     ; true
-    ldi     s11, #-42   ; false
+    ldi     r9, #42     ; true
+    ldi     r10, #0     ; true
+    ldi     r11, #-42   ; false
 
-    bge     s9, right1
-    bge     s11, wrong1
+    bge     r9, right1
+    bge     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    bge     s10, right2
-    bge     s11, wrong2
+    bge     r10, right2
+    bge     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    bge     s11, wrong3
-    bge     s9, right3
+    bge     r11, wrong3
+    bge     r9, right3
 wrong3:
     FAIL
 right3:
 
-    bge     s11, wrong4
-    bge     s10, right4
+    bge     r11, wrong4
+    bge     r10, right4
 wrong4:
     FAIL
 right4:

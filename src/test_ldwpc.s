@@ -25,8 +25,8 @@
 
     BEGIN_TEST  test_ldwpc
 
-    ldwpc   s11, #data@pc
-    CHECKEQ s11, 12345678
+    ldwpc   r11, #data@pc
+    CHECKEQ r11, 12345678
 
     END_TEST
 

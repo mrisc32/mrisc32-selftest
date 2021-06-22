@@ -25,38 +25,38 @@
 
     BEGIN_TEST  test_ldub
 
-    addpchi s9, #data@pchi
-    add     s9, s9, #data+4@pclo
+    addpchi r9, #data@pchi
+    add     r9, r9, #data+4@pclo
 
     ; Immediate offset.
-    ldub    s11, s9, #0
-    CHECKEQ s11, 1
+    ldub    r11, r9, #0
+    CHECKEQ r11, 1
 
-    ldub    s11, s9, #2
-    CHECKEQ s11, 3
+    ldub    r11, r9, #2
+    CHECKEQ r11, 3
 
-    ldub    s11, s9, #3
-    CHECKEQ s11, 0x000000fc
+    ldub    r11, r9, #3
+    CHECKEQ r11, 0x000000fc
 
     ; Register offset.
-    ldub    s11, s9, z
-    CHECKEQ s11, 1
+    ldub    r11, r9, z
+    CHECKEQ r11, 1
 
-    ldi     s10, #7
-    ldub    s11, s9, s10
-    CHECKEQ s11, 0x000000f8
+    ldi     r10, #7
+    ldub    r11, r9, r10
+    CHECKEQ r11, 0x000000f8
 
     ; Register offset with scale.
-    ldi     s10, #1
+    ldi     r10, #1
 
-    ldub    s11, s9, s10*2
-    CHECKEQ s11, 3
+    ldub    r11, r9, r10*2
+    CHECKEQ r11, 3
 
-    ldub    s11, s9, s10*4
-    CHECKEQ s11, 5
+    ldub    r11, r9, r10*4
+    CHECKEQ r11, 5
 
-    ldub    s11, s9, s10*8
-    CHECKEQ s11, 9
+    ldub    r11, r9, r10*8
+    CHECKEQ r11, 9
 
     END_TEST
 

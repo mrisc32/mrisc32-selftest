@@ -25,16 +25,16 @@
 
     BEGIN_TEST  test_jl
 
-    addpchi s9, #0
-    add     s9, s9, #12
-    jl      pc, #right1@pc  ; This should make lr == s9
+    addpchi r9, #0
+    add     r9, r9, #12
+    jl      pc, #right1@pc  ; This should make lr == r9
 
 wrong1:
     FAIL
 
 right1:
-    seq     s9, lr, s9
-    CHECKEQ s9, -1
+    seq     r9, lr, r9
+    CHECKEQ r9, -1
 
     END_TEST
 

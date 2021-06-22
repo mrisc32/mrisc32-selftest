@@ -25,27 +25,27 @@
 
     BEGIN_TEST  test_blt
 
-    ldi     s9, #-42    ; true
-    ldi     s10, #0     ; false
-    ldi     s11, #42    ; false
+    ldi     r9, #-42    ; true
+    ldi     r10, #0     ; false
+    ldi     r11, #42    ; false
 
-    blt     s9, right1
-    blt     s10, wrong1
-    blt     s11, wrong1
+    blt     r9, right1
+    blt     r10, wrong1
+    blt     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    blt     s10, wrong2
-    blt     s9, right2
-    blt     s11, wrong2
+    blt     r10, wrong2
+    blt     r9, right2
+    blt     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    blt     s10, wrong3
-    blt     s11, wrong3
-    blt     s9, right3
+    blt     r10, wrong3
+    blt     r11, wrong3
+    blt     r9, right3
 wrong3:
     FAIL
 right3:

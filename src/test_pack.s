@@ -27,19 +27,19 @@
 
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x87654321
-    ldi     s10, #0x12345678
+    ldi     r9,  #0x87654321
+    ldi     r10, #0x12345678
 
-    pack    s11, s9, s10
-    CHECKEQ s11, 0x43215678
+    pack    r11, r9, r10
+    CHECKEQ r11, 0x43215678
 
     ; Packed half-word.
-    pack.h  s11, s9, s10
-    CHECKEQ s11, 0x65342178
+    pack.h  r11, r9, r10
+    CHECKEQ r11, 0x65342178
 
     ; Packed byte.
-    pack.b  s11, s9, s10
-    CHECKEQ s11, 0x72543618
+    pack.b  r11, r9, r10
+    CHECKEQ r11, 0x72543618
 
 no_packed_ops:
 

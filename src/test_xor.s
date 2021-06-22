@@ -26,21 +26,21 @@
     BEGIN_TEST  test_xor
 
     ; Immediate operand.
-    ldi     s9, #0x00023456
-    xor     s10, s9, #0x00000f55
-    CHECKEQ s10, 0x00023b03
+    ldi     r9, #0x00023456
+    xor     r10, r9, #0x00000f55
+    CHECKEQ r10, 0x00023b03
 
     ; Register operands.
-    ldi     s9, #0x00023456    ; Neg: 0xfffdcba9
-    ldi     s10, #0xffff0000   ; Neg: 0x0000ffff
-    xor     s11, s9, s10
-    CHECKEQ s11, 0xfffd3456
-    xor.pn  s11, s9, s10
-    CHECKEQ s11, 0x0002cba9
-    xor.np  s11, s9, s10
-    CHECKEQ s11, 0x0002cba9
-    xor.nn  s11, s9, s10
-    CHECKEQ s11, 0xfffd3456
+    ldi     r9, #0x00023456    ; Neg: 0xfffdcba9
+    ldi     r10, #0xffff0000   ; Neg: 0x0000ffff
+    xor     r11, r9, r10
+    CHECKEQ r11, 0xfffd3456
+    xor.pn  r11, r9, r10
+    CHECKEQ r11, 0x0002cba9
+    xor.np  r11, r9, r10
+    CHECKEQ r11, 0x0002cba9
+    xor.nn  r11, r9, r10
+    CHECKEQ r11, 0xfffd3456
 
     END_TEST
 

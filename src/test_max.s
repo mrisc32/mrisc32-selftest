@@ -26,39 +26,39 @@
     BEGIN_TEST  test_max
 
     ; Immediate operand.
-    ldi     s9, #123456
-    max     s10, s9, #42
-    CHECKEQ s10, 123456
+    ldi     r9, #123456
+    max     r10, r9, #42
+    CHECKEQ r10, 123456
 
-    ldi     s9, #-41
-    max     s10, s9, #42
-    CHECKEQ s10, 42
+    ldi     r9, #-41
+    max     r10, r9, #42
+    CHECKEQ r10, 42
 
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    max     s11, s9, s10
-    CHECKEQ s11, 123456
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    max     r11, r9, r10
+    CHECKEQ r11, 123456
 
-    ldi     s9, #-123456
-    ldi     s10, #123456
-    max     s11, s9, s10
-    CHECKEQ s11, 123456
+    ldi     r9, #-123456
+    ldi     r10, #123456
+    max     r11, r9, r10
+    CHECKEQ r11, 123456
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x12f4a607
-    ldi     s10, #0x11125698
+    ldi     r9,  #0x12f4a607
+    ldi     r10, #0x11125698
 
     ; Packed half-word.
-    max.h   s11, s9, s10
-    CHECKEQ s11, 0x12f45698
+    max.h   r11, r9, r10
+    CHECKEQ r11, 0x12f45698
 
     ; Packed byte.
-    max.b   s11, s9, s10
-    CHECKEQ s11, 0x12125607
+    max.b   r11, r9, r10
+    CHECKEQ r11, 0x12125607
 
 no_packed_ops:
 

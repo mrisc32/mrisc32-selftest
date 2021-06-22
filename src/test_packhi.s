@@ -27,19 +27,19 @@
 
     NOPO        no_packed_ops
 
-    ldi         s9,  #0x87ff8f97
-    ldi         s10, #0x1f34567f
+    ldi         r9,  #0x87ff8f97
+    ldi         r10, #0x1f34567f
 
-    packhi      s11, s9, s10
-    CHECKEQ     s11, 0x87ff1f34
+    packhi      r11, r9, r10
+    CHECKEQ     r11, 0x87ff1f34
 
     ; packed half-word.
-    packhi.h    s11, s9, s10
-    CHECKEQ     s11, 0x871f8f56
+    packhi.h    r11, r9, r10
+    CHECKEQ     r11, 0x871f8f56
 
     ; packed byte.
-    packhi.b    s11, s9, s10
-    CHECKEQ     s11, 0x81f38597
+    packhi.b    r11, r9, r10
+    CHECKEQ     r11, 0x81f38597
 
 no_packed_ops:
 

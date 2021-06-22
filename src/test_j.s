@@ -37,8 +37,8 @@ wrong1:
 right1:
 
     ; PC-relative (long)
-    addpchi s9, #right2@pchi
-    j       s9, #right2+4@pclo
+    addpchi r9, #right2@pchi
+    j       r9, #right2+4@pclo
 
 wrong2:
     FAIL
@@ -46,8 +46,8 @@ wrong2:
 right2:
 
     ; Absolute (long)
-    ldhi    s9, #right3@hi
-    j       s9, #right3@lo
+    ldhi    r9, #right3@hi
+    j       r9, #right3@lo
 
 wrong3:
     FAIL
@@ -55,20 +55,20 @@ wrong3:
 right3:
 
     ; Register-offset
-    addpchi s9, #jump_base@pchi
-    add     s9, s9, #jump_base+4@pclo
-    ldi     s10, #0
-    ldi     s11, #123
-    j       s9, #8
+    addpchi r9, #jump_base@pchi
+    add     r9, r9, #jump_base+4@pclo
+    ldi     r10, #0
+    ldi     r11, #123
+    j       r9, #8
 
 jump_base:
-    add     s11, s10, #1
-    add     s10, s11, #1
-    add     s11, s10, #1    ; This is where we should land
-    add     s10, s11, #1
-    add     s11, s10, #1
+    add     r11, r10, #1
+    add     r10, r11, #1
+    add     r11, r10, #1    ; This is where we should land
+    add     r10, r11, #1
+    add     r11, r10, #1
 
-    CHECKEQ s11, 3
+    CHECKEQ r11, 3
 
 
     ; Check that LR was not modified.

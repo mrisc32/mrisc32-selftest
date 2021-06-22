@@ -26,39 +26,39 @@
     BEGIN_TEST  test_min
 
     ; Immediate operand.
-    ldi     s9, #123456
-    min     s10, s9, #42
-    CHECKEQ s10, 42
+    ldi     r9, #123456
+    min     r10, r9, #42
+    CHECKEQ r10, 42
 
-    ldi     s9, #-41
-    min     s10, s9, #42
-    CHECKEQ s10, -41
+    ldi     r9, #-41
+    min     r10, r9, #42
+    CHECKEQ r10, -41
 
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    min     s11, s9, s10
-    CHECKEQ s11, -9456
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    min     r11, r9, r10
+    CHECKEQ r11, -9456
 
-    ldi     s9, #-123456
-    ldi     s10, #123456
-    min     s11, s9, s10
-    CHECKEQ s11, -123456
+    ldi     r9, #-123456
+    ldi     r10, #123456
+    min     r11, r9, r10
+    CHECKEQ r11, -123456
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x12f4a607
-    ldi     s10, #0x11125698
+    ldi     r9,  #0x12f4a607
+    ldi     r10, #0x11125698
 
     ; Packed half-word.
-    min.h   s11, s9, s10
-    CHECKEQ s11, 0x1112a607
+    min.h   r11, r9, r10
+    CHECKEQ r11, 0x1112a607
 
     ; Packed byte.
-    min.b   s11, s9, s10
-    CHECKEQ s11, 0x11f4a698
+    min.b   r11, r9, r10
+    CHECKEQ r11, 0x11f4a698
 
 no_packed_ops:
 

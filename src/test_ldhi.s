@@ -25,11 +25,11 @@
 
     BEGIN_TEST  test_ldhi
 
-    ldhi    s9, #0x7ffff000
-    CHECKEQ s9, 0x7ffff000
+    ldhi    r9, #0x7ffff000
+    CHECKEQ r9, 0x7ffff000
 
-    ldhi    s9, #0x7fffffff
-    CHECKEQ s9, 0x7fffffff
+    ldhi    r9, #0x7fffffff
+    CHECKEQ r9, 0x7fffffff
 
     END_TEST
 

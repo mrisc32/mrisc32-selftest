@@ -26,29 +26,29 @@
     BEGIN_TEST  test_add
 
     ; Immediate operand.
-    ldi     s9, #123456
-    add     s10, s9, #42
-    CHECKEQ s10, 123498
+    ldi     r9, #123456
+    add     r10, r9, #42
+    CHECKEQ r10, 123498
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    add     s11, s9, s10
-    CHECKEQ s11, 114000
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    add     r11, r9, r10
+    CHECKEQ r11, 114000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9, #0x1234a698
-    ldi     s10, #0xa7ef83a3
+    ldi     r9, #0x1234a698
+    ldi     r10, #0xa7ef83a3
 
     ; Packed half-word.
-    add.h   s11, s9, s10
-    CHECKEQ s11, 0xba232a3b
+    add.h   r11, r9, r10
+    CHECKEQ r11, 0xba232a3b
 
     ; Packed byte.
-    add.b   s11, s9, s10
-    CHECKEQ s11, 0xb923293b
+    add.b   r11, r9, r10
+    CHECKEQ r11, 0xb923293b
 
 no_packed_ops:
 

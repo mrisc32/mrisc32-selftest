@@ -26,39 +26,39 @@
     BEGIN_TEST  test_sne
 
     ; Immediate operand.
-    ldi     s9, #123456
-    sne     s10, s9, #42
-    CHECKEQ s10, 0xffffffff
+    ldi     r9, #123456
+    sne     r10, r9, #42
+    CHECKEQ r10, 0xffffffff
 
-    ldi     s9, #42
-    sne     s10, s9, #42
-    CHECKEQ s10, 0x00000000
+    ldi     r9, #42
+    sne     r10, r9, #42
+    CHECKEQ r10, 0x00000000
 
 
     ; Register operands.
-    ldi     s9, #123456
-    ldi     s10, #-9456
-    sne     s11, s9, s10
-    CHECKEQ s11, 0xffffffff
+    ldi     r9, #123456
+    ldi     r10, #-9456
+    sne     r11, r9, r10
+    CHECKEQ r11, 0xffffffff
 
-    ldi     s9, #123456
-    ldi     s10, #123456
-    sne     s11, s9, s10
-    CHECKEQ s11, 0x00000000
+    ldi     r9, #123456
+    ldi     r10, #123456
+    sne     r11, r9, r10
+    CHECKEQ r11, 0x00000000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x1234a698
-    ldi     s10, #0x1212a698
+    ldi     r9,  #0x1234a698
+    ldi     r10, #0x1212a698
 
     ; Packed half-word.
-    sne.h   s11, s9, s10
-    CHECKEQ s11, 0xffff0000
+    sne.h   r11, r9, r10
+    CHECKEQ r11, 0xffff0000
 
     ; Packed byte.
-    sne.b   s11, s9, s10
-    CHECKEQ s11, 0x00ff0000
+    sne.b   r11, r9, r10
+    CHECKEQ r11, 0x00ff0000
 
 no_packed_ops:
 

@@ -25,27 +25,27 @@
 
     BEGIN_TEST  test_bgt
 
-    ldi     s9, #42     ; true
-    ldi     s10, #0     ; false
-    ldi     s11, #-42   ; false
+    ldi     r9, #42     ; true
+    ldi     r10, #0     ; false
+    ldi     r11, #-42   ; false
 
-    bgt     s9, right1
-    bgt     s10, wrong1
-    bgt     s11, wrong1
+    bgt     r9, right1
+    bgt     r10, wrong1
+    bgt     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    bgt     s10, wrong2
-    bgt     s9, right2
-    bgt     s11, wrong2
+    bgt     r10, wrong2
+    bgt     r9, right2
+    bgt     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    bgt     s10, wrong3
-    bgt     s11, wrong3
-    bgt     s9, right3
+    bgt     r10, wrong3
+    bgt     r11, wrong3
+    bgt     r9, right3
 wrong3:
     FAIL
 right3:

@@ -25,30 +25,30 @@
 
     BEGIN_TEST  test_bns
 
-    ldi     s9, #1      ; true
-    ldi     s10, #0     ; true
-    ldi     s11, #-1    ; false
+    ldi     r9, #1      ; true
+    ldi     r10, #0     ; true
+    ldi     r11, #-1    ; false
 
-    bns     s9, right1
-    bns     s11, wrong1
+    bns     r9, right1
+    bns     r11, wrong1
 wrong1:
     FAIL
 right1:
 
-    bns     s10, right2
-    bns     s11, wrong2
+    bns     r10, right2
+    bns     r11, wrong2
 wrong2:
     FAIL
 right2:
 
-    bns     s11, wrong3
-    bns     s9, right3
+    bns     r11, wrong3
+    bns     r9, right3
 wrong3:
     FAIL
 right3:
 
-    bns     s11, wrong4
-    bns     s10, right4
+    bns     r11, wrong4
+    bns     r10, right4
 wrong4:
     FAIL
 right4:

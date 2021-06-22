@@ -25,17 +25,17 @@
 
     BEGIN_TEST  test_rev
 
-    ldi     s9, #0x00000000
-    rev     s10, s9
-    CHECKEQ s10, 0x00000000
+    ldi     r9, #0x00000000
+    rev     r10, r9
+    CHECKEQ r10, 0x00000000
 
-    ldi     s9, #-1
-    rev     s10, s9
-    CHECKEQ s10, -1
+    ldi     r9, #-1
+    rev     r10, r9
+    CHECKEQ r10, -1
 
-    ldi     s9, #0x87654321
-    rev     s10, s9
-    CHECKEQ s10, 0x84c2a6e1
+    ldi     r9, #0x87654321
+    rev     r10, r9
+    CHECKEQ r10, 0x84c2a6e1
 
     END_TEST
 

@@ -26,39 +26,39 @@
     BEGIN_TEST  test_mkbf
 
     ; Immediate operands.
-    ldi     s9, #123456
-    mkbf    s10, s9, #3         ; Pure shift.
-    CHECKEQ s10, 987648
+    ldi     r9, #123456
+    mkbf    r10, r9, #3         ; Pure shift.
+    CHECKEQ r10, 987648
 
-    ldi     s9, #-41
-    mkbf    s10, s9, #(7<<5)|3  ; Width and shift.
-    CHECKEQ s10, 696
+    ldi     r9, #-41
+    mkbf    r10, r9, #(7<<5)|3  ; Width and shift.
+    CHECKEQ r10, 696
 
     ; Register operands.
-    ldi     s9, #0x23456
-    ldi     s10, #5
-    mkbf    s11, s9, s10
-    CHECKEQ s11, 0x468ac0
+    ldi     r9, #0x23456
+    ldi     r10, #5
+    mkbf    r11, r9, r10
+    CHECKEQ r11, 0x468ac0
 
-    ldi     s9, #0xa9875000
-    ldi     s10, #17
-    mkbf    s11, s9, s10
-    CHECKEQ s11, 0xa0000000
+    ldi     r9, #0xa9875000
+    ldi     r10, #17
+    mkbf    r11, r9, r10
+    CHECKEQ r11, 0xa0000000
 
     ; Can we do packed operations?
     NOPO    no_packed_ops
 
-    ldi     s9,  #0x1289ab78
-    ldi     s10, #0x0062000a
-    ldi     s11, #0x11028304
+    ldi     r9,  #0x1289ab78
+    ldi     r10, #0x0062000a
+    ldi     r11, #0x11028304
 
     ; Packed half-word.
-    mkbf.h  s12, s9, s10
-    CHECKEQ s12, 0x0024e000
+    mkbf.h  r12, r9, r10
+    CHECKEQ r12, 0x0024e000
 
     ; Packed byte.
-    mkbf.b  s12, s9, s11
-    CHECKEQ s12, 0x04245880
+    mkbf.b  r12, r9, r11
+    CHECKEQ r12, 0x04245880
 
 no_packed_ops:
 

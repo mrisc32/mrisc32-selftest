@@ -27,50 +27,50 @@
 
     NOFP    no_fpu
 
-    ldi     s9,  #0x3f800000    ; 1.0
-    ldi     s10, #0x3f800000    ; 1.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x40000000     ; 2.0
+    ldi     r9,  #0x3f800000    ; 1.0
+    ldi     r10, #0x3f800000    ; 1.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x40000000     ; 2.0
 
-    ldi     s9,  #0xbf800000    ; -1.0
-    ldi     s10, #0xbf800000    ; -1.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0xc0000000     ; -2.0
+    ldi     r9,  #0xbf800000    ; -1.0
+    ldi     r10, #0xbf800000    ; -1.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0xc0000000     ; -2.0
 
-    ldi     s9,  #0x3f800000    ; 1.0
-    ldi     s10, #0xbf800000    ; -1.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x00000000     ; 0.0
+    ldi     r9,  #0x3f800000    ; 1.0
+    ldi     r10, #0xbf800000    ; -1.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x00000000     ; 0.0
 
-    ldi     s9,  #0xc49a4000    ; -1234.0
-    ldi     s10, #0x00000000    ; 0.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0xc49a4000     ; -1234.0
+    ldi     r9,  #0xc49a4000    ; -1234.0
+    ldi     r10, #0x00000000    ; 0.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0xc49a4000     ; -1234.0
 
-    ldi     s9,  #0xc76cee00    ; -60654.0
-    ldi     s10, #0x47f1bb00    ; 123766.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x47768800     ; 63112.0
+    ldi     r9,  #0xc76cee00    ; -60654.0
+    ldi     r10, #0x47f1bb00    ; 123766.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x47768800     ; 63112.0
 
-    ldi     s9,  #0x58635fa9    ; 1.0e15
-    ldi     s10, #0x3f800000    ; 1.0
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x58635fa9     ; 1.0e15
+    ldi     r9,  #0x58635fa9    ; 1.0e15
+    ldi     r10, #0x3f800000    ; 1.0
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x58635fa9     ; 1.0e15
 
-    ldi     s9,  #0x7f7f0000    ; 3.38953138925e+38
-    ldi     s10, #0x7f7d8000    ; 3.36959296931e+38
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x7f800000     ; Inf
+    ldi     r9,  #0x7f7f0000    ; 3.38953138925e+38
+    ldi     r10, #0x7f7d8000    ; 3.36959296931e+38
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x7f800000     ; Inf
 
-    ldi     s9,  #0x7f7f0000    ; 3.38953138925e+38
-    ldi     s10, #0xff7d8000    ; -3.36959296931e+38
-    fadd    s11, s9, s10
-    CHECKEQ s11, 0x7bc00000     ; 1.99384199368e+36
+    ldi     r9,  #0x7f7f0000    ; 3.38953138925e+38
+    ldi     r10, #0xff7d8000    ; -3.36959296931e+38
+    fadd    r11, r9, r10
+    CHECKEQ r11, 0x7bc00000     ; 1.99384199368e+36
 
-    ldi     s9,  #0x7f800000    ; Inf
-    ldi     s10, #0xff800000    ; -Inf
-    fadd    s11, s9, s10
-    CHECKNAN s11                ; NaN
+    ldi     r9,  #0x7f800000    ; Inf
+    ldi     r10, #0xff800000    ; -Inf
+    fadd    r11, r9, r10
+    CHECKNAN r11                ; NaN
 
     ; Can we do packed operations?
     NOPO    no_packed_ops

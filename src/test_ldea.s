@@ -25,39 +25,39 @@
 
     BEGIN_TEST  test_ldea
 
-    ldi     s9, #0x12345678
+    ldi     r9, #0x12345678
 
     ; Immediate offset.
-    ldea    s10, s9, #0
-    CHECKEQ s10, 0x12345678
+    ldea    r10, r9, #0
+    CHECKEQ r10, 0x12345678
 
-    ldea    s10, s9, #42
-    CHECKEQ s10, 0x123456a2
+    ldea    r10, r9, #42
+    CHECKEQ r10, 0x123456a2
 
-    ldea    s10, s9, #-42
-    CHECKEQ s10, 0x1234564e
+    ldea    r10, r9, #-42
+    CHECKEQ r10, 0x1234564e
 
 
     ; Register offset.
-    ldi     s10, #42
-    ldea    s10, s9, s10
-    CHECKEQ s10, 0x123456a2
+    ldi     r10, #42
+    ldea    r10, r9, r10
+    CHECKEQ r10, 0x123456a2
 
-    ldi     s10, #-42
-    ldea    s10, s9, s10
-    CHECKEQ s10, 0x1234564e
+    ldi     r10, #-42
+    ldea    r10, r9, r10
+    CHECKEQ r10, 0x1234564e
 
     ; Register offset with scale.
-    ldi     s10, #1
+    ldi     r10, #1
 
-    ldea    s11, s9, s10*2
-    CHECKEQ s11, 0x1234567a
+    ldea    r11, r9, r10*2
+    CHECKEQ r11, 0x1234567a
 
-    ldea    s11, s9, s10*4
-    CHECKEQ s11, 0x1234567c
+    ldea    r11, r9, r10*4
+    CHECKEQ r11, 0x1234567c
 
-    ldea    s11, s9, s10*8
-    CHECKEQ s11, 0x12345680
+    ldea    r11, r9, r10*8
+    CHECKEQ r11, 0x12345680
 
     END_TEST
 
