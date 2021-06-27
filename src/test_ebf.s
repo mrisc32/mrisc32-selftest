@@ -31,7 +31,7 @@
     CHECKEQ r10, 15432
 
     ldi     r9, #-41
-    ebf     r10, r9, #(7<<5)|3  ; Width and shift.
+    ebf     r10, r9, #<3:7>     ; Width and shift.
     CHECKEQ r10, 0xfffffffa
 
 

@@ -31,7 +31,7 @@
     CHECKEQ r10, 987648
 
     ldi     r9, #-41
-    mkbf    r10, r9, #(7<<5)|3  ; Width and shift.
+    mkbf    r10, r9, #<3:7>     ; Width and shift.
     CHECKEQ r10, 696
 
     ; Register operands.
