@@ -55,11 +55,11 @@
 
     ; Packed half-word.
     ebf.h   r12, r9, r10
-    CHECKEQ r12, 0xffe2ffea
+    CHECKEQ r12, 0x04a2ffea
 
     ; Packed byte.
     ebf.b   r12, r9, r11
-    CHECKEQ r12, 0x01e2f507
+    CHECKEQ r12, 0xffe2f507
 
 no_packed_ops:
 

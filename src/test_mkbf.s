@@ -54,11 +54,11 @@
 
     ; Packed half-word.
     mkbf.h  r12, r9, r10
-    CHECKEQ r12, 0x0024e000
+    CHECKEQ r12, 0x4a24e000
 
     ; Packed byte.
     mkbf.b  r12, r9, r11
-    CHECKEQ r12, 0x04245880
+    CHECKEQ r12, 0x00245880
 
 no_packed_ops:
 

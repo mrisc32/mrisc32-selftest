@@ -55,7 +55,7 @@
 
     ; Packed half-word.
     ebfu.h  r12, r9, r10
-    CHECKEQ r12, 0x0022002a
+    CHECKEQ r12, 0x04a2002a
 
     ; Packed byte.
     ebfu.b   r12, r9, r11
