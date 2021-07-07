@@ -28,35 +28,35 @@
     ldi     r9, #0x12345678
 
     ; Immediate offset.
-    ldea    r10, r9, #0
+    ldea    r10, [r9, #0]
     CHECKEQ r10, 0x12345678
 
-    ldea    r10, r9, #42
+    ldea    r10, [r9, #42]
     CHECKEQ r10, 0x123456a2
 
-    ldea    r10, r9, #-42
+    ldea    r10, [r9, #-42]
     CHECKEQ r10, 0x1234564e
 
 
     ; Register offset.
     ldi     r10, #42
-    ldea    r10, r9, r10
+    ldea    r10, [r9, r10]
     CHECKEQ r10, 0x123456a2
 
     ldi     r10, #-42
-    ldea    r10, r9, r10
+    ldea    r10, [r9, r10]
     CHECKEQ r10, 0x1234564e
 
     ; Register offset with scale.
     ldi     r10, #1
 
-    ldea    r11, r9, r10*2
+    ldea    r11, [r9, r10*2]
     CHECKEQ r11, 0x1234567a
 
-    ldea    r11, r9, r10*4
+    ldea    r11, [r9, r10*4]
     CHECKEQ r11, 0x1234567c
 
-    ldea    r11, r9, r10*8
+    ldea    r11, [r9, r10*8]
     CHECKEQ r11, 0x12345680
 
     END_TEST

@@ -29,33 +29,33 @@
     add     r9, r9, #data+4@pclo
 
     ; Immediate offset.
-    ldh     r11, r9, #0
+    ldh     r11,  [r9]
     CHECKEQ r11, 1
 
-    ldh     r11, r9, #4
+    ldh     r11, [r9, #4]
     CHECKEQ r11, 3
 
-    ldh     r11, r9, #6
+    ldh     r11, [r9, #6]
     CHECKEQ r11, -4
 
     ; Register offset.
-    ldh     r11, r9, z
+    ldh     r11, [r9, z]
     CHECKEQ r11, 1
 
     ldi     r10, #7*2
-    ldh     r11, r9, r10
+    ldh     r11, [r9, r10]
     CHECKEQ r11, -8
 
     ; Register offset with scale.
     ldi     r10, #1
 
-    ldh     r11, r9, r10*2
+    ldh     r11, [r9, r10*2]
     CHECKEQ r11, -2
 
-    ldh     r11, r9, r10*4
+    ldh     r11, [r9, r10*4]
     CHECKEQ r11, 3
 
-    ldh     r11, r9, r10*8
+    ldh     r11, [r9, r10*8]
     CHECKEQ r11, 5
 
     END_TEST

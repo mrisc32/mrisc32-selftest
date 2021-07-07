@@ -30,37 +30,37 @@
 
     ; Immediate offset.
     ldi     r9, #0xf1234
-    sth     r9, sp, #0
+    sth     r9, [sp]
     ldi     r9, #0xf5678
-    sth     r9, sp, #2
-    ldw     r11, sp, #0
+    sth     r9, [sp, #2]
+    ldw     r11, [sp]
     CHECKEQ r11, 0x56781234
 
     ; Register offset.
     ldi     r9, #0xf8765
     ldi     r10, #0
-    sth     r9, sp, r10
+    sth     r9, [sp, r10]
     ldi     r9, #0xf4321
     ldi     r10, #2
-    sth     r9, sp, r10
-    ldw     r11, sp, #0
+    sth     r9, [sp, r10]
+    ldw     r11, [sp]
     CHECKEQ r11, 0x43218765
 
     ; Register offset with scale.
     ldi     r10, #1
 
     ldi     r9, #0xf8765
-    sth     r9, sp, r10*2
+    sth     r9, [sp, r10*2]
     ldi     r9, #0xf4321
-    sth     r9, sp, r10*4
+    sth     r9, [sp, r10*4]
     ldi     r9, #0xf9437
-    sth     r9, sp, r10*8
+    sth     r9, [sp, r10*8]
 
-    lduh    r11, sp, #2
+    lduh    r11, [sp, #2]
     CHECKEQ r11, 0x8765
-    lduh    r11, sp, #4
+    lduh    r11, [sp, #4]
     CHECKEQ r11, 0x4321
-    lduh    r11, sp, #8
+    lduh    r11, [sp, #8]
     CHECKEQ r11, 0x9437
 
     ; Free stack space.

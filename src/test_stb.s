@@ -30,47 +30,47 @@
 
     ; Immediate offset.
     ldi     r9, #0x3f12
-    stb     r9, sp, #0
+    stb     r9, [sp]
     ldi     r9, #0x3f34
-    stb     r9, sp, #1
+    stb     r9, [sp, #1]
     ldi     r9, #0x3f56
-    stb     r9, sp, #2
+    stb     r9, [sp, #2]
     ldi     r9, #0x3f78
-    stb     r9, sp, #3
-    ldw     r11, sp, #0
+    stb     r9, [sp, #3]
+    ldw     r11, [sp]
     CHECKEQ r11, 0x78563412
 
     ; Register offset.
     ldi     r9, #0x3f87
     ldi     r10, #0
-    stb     r9, sp, r10
+    stb     r9, [sp, r10]
     ldi     r9, #0x3f65
     ldi     r10, #1
-    stb     r9, sp, r10
+    stb     r9, [sp, r10]
     ldi     r9, #0x3f43
     ldi     r10, #2
-    stb     r9, sp, r10
+    stb     r9, [sp, r10]
     ldi     r9, #0x3f21
     ldi     r10, #3
-    stb     r9, sp, r10
-    ldw     r11, sp, #0
+    stb     r9, [sp, r10]
+    ldw     r11, [sp]
     CHECKEQ r11, 0x21436587
 
     ; Register offset with scale.
     ldi     r10, #1
 
     ldi     r9, #0x3f87
-    stb     r9, sp, r10*2
+    stb     r9, [sp, r10*2]
     ldi     r9, #0x3f65
-    stb     r9, sp, r10*4
+    stb     r9, [sp, r10*4]
     ldi     r9, #0x3f43
-    stb     r9, sp, r10*8
+    stb     r9, [sp, r10*8]
 
-    ldub    r11, sp, #2
+    ldub    r11, [sp, #2]
     CHECKEQ r11, 0x87
-    ldub    r11, sp, #4
+    ldub    r11, [sp, #4]
     CHECKEQ r11, 0x65
-    ldub    r11, sp, #8
+    ldub    r11, [sp, #8]
     CHECKEQ r11, 0x43
 
     ; Free stack space.

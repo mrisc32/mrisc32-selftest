@@ -37,11 +37,11 @@
 
 selftest_run:
     add     sp, sp, #-20
-    stw     lr, sp, #0
-    stw     r16, sp, #4
-    stw     r17, sp, #8
-    stw     r18, sp, #12
-    stw     r19, sp, #16
+    stw     lr, [sp, #0]
+    stw     r16, [sp, #4]
+    stw     r17, [sp, #8]
+    stw     r18, [sp, #12]
+    stw     r19, [sp, #16]
 
     ; r16 = Pointer to the list of tests.
     addpchi r16, #tests@pchi
@@ -57,12 +57,12 @@ selftest_run:
     ldi     r19, #0
 
 loop:
-    ldw     r1, r16, r19*4  ; Load the next test
-    bz      r1, done        ; (exit when there are no more tests)
+    ldw     r1, [r16, r19*4]  ; Load the next test
+    bz      r1, done          ; (exit when there are no more tests)
 
     ; Call the test function.
     jl      r1
-    and     r17, r17, r1    ; Update the total test result
+    and     r17, r17, r1      ; Update the total test result
 
     ; Call the test result function.
     ;  r1 = test result (pass/fail)
@@ -76,13 +76,13 @@ no_callback:
     b       loop
 
 done:
-    mov     r1, r17         ; Return the total test result
+    mov     r1, r17           ; Return the total test result
 
-    ldw     lr, sp, #0
-    ldw     r16, sp, #4
-    ldw     r17, sp, #8
-    ldw     r18, sp, #12
-    ldw     r19, sp, #16
+    ldw     lr, [sp, #0]
+    ldw     r16, [sp, #4]
+    ldw     r17, [sp, #8]
+    ldw     r18, [sp, #12]
+    ldw     r19, [sp, #16]
     add     sp, sp, #20
     ret
 
@@ -101,18 +101,18 @@ selftest_prologue:
     ; This is called from BEGIN_TEST.
     ; Note: BEGIN_TEST has preserved LR in R1 before calling this function.
     add     sp, sp, #-48
-    stw     r16, sp, #0
-    stw     r17, sp, #4
-    stw     r18, sp, #8
-    stw     r19, sp, #12
-    stw     r20, sp, #16
-    stw     r21, sp, #20
-    stw     r22, sp, #24
-    stw     r23, sp, #28
-    stw     r24, sp, #32
-    stw     r25, sp, #36
-    stw     r26, sp, #40
-    stw     r1, sp, #44     ; Actually: R1 = LR for the test function.
+    stw     r16, [sp, #0]
+    stw     r17, [sp, #4]
+    stw     r18, [sp, #8]
+    stw     r19, [sp, #12]
+    stw     r20, [sp, #16]
+    stw     r21, [sp, #20]
+    stw     r22, [sp, #24]
+    stw     r23, [sp, #28]
+    stw     r24, [sp, #32]
+    stw     r25, [sp, #36]
+    stw     r26, [sp, #40]
+    stw     r1, [sp, #44]     ; Actually: R1 = LR for the test function.
 
     ; r26 holds the test result (TRUE by default).
     ldi     r26, #-1
@@ -133,18 +133,18 @@ selftest_epilogue:
     mov     r1, r26
 
     ; Restore r16-r26 & lr
-    ldw     r16, sp, #0
-    ldw     r17, sp, #4
-    ldw     r18, sp, #8
-    ldw     r19, sp, #12
-    ldw     r20, sp, #16
-    ldw     r21, sp, #20
-    ldw     r22, sp, #24
-    ldw     r23, sp, #28
-    ldw     r24, sp, #32
-    ldw     r25, sp, #36
-    ldw     r26, sp, #40
-    ldw     lr, sp, #44
+    ldw     r16, [sp, #0]
+    ldw     r17, [sp, #4]
+    ldw     r18, [sp, #8]
+    ldw     r19, [sp, #12]
+    ldw     r20, [sp, #16]
+    ldw     r21, [sp, #20]
+    ldw     r22, [sp, #24]
+    ldw     r23, [sp, #28]
+    ldw     r24, [sp, #32]
+    ldw     r25, [sp, #36]
+    ldw     r26, [sp, #40]
+    ldw     lr, [sp, #44]
     add     sp, sp, #48
 
     ; Return from the test
