@@ -23,12 +23,20 @@
 
     .include    "selftest.inc"
 
-    BEGIN_TEST  test_ldhi
+    BEGIN_TEST  test_ldi
 
-    ldhi    r9, #0x7ffff000
-    CHECKEQ r9, 0x7ffff000
+    ; TODO(m): How to check that these are not expanded to two instructions?
 
-    ldhi    r9, #0x7fffffff
+    ldi     r9, #0x0007ffff
+    CHECKEQ r9, 0x0007ffff
+
+    ldi     r9, #0xfff80000
+    CHECKEQ r9, 0xfff80000
+
+    ldi     r9, #0x7fffe000
+    CHECKEQ r9, 0x7fffe000
+
+    ldi     r9, #0x7fffffff
     CHECKEQ r9, 0x7fffffff
 
     END_TEST

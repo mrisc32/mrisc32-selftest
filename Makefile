@@ -64,9 +64,8 @@ LIBOBJS = \
   $(OUT)/test_j.o \
   $(OUT)/test_ldb.o \
   $(OUT)/test_ldea.o \
-  $(OUT)/test_ldhi.o \
+  $(OUT)/test_ldi.o \
   $(OUT)/test_ldh.o \
-  $(OUT)/test_ldli.o \
   $(OUT)/test_ldub.o \
   $(OUT)/test_lduh.o \
   $(OUT)/test_ldw.o \

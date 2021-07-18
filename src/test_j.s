@@ -46,7 +46,7 @@ wrong2:
 right2:
 
     ; Absolute (long)
-    ldhi    r9, #right3@hi
+    ldi     r9, #right3@hi
     j       r9, #right3@lo
 
 wrong3:

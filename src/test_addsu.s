@@ -34,8 +34,8 @@
     CHECKEQ r11, 11293
 
     ; Saturate at max word.
-    ldhi    r9,  #0x7ffff000
-    ldhi    r10, #0x85432000
+    ldi     r9,  #0x7ffff000
+    ldi     r10, #0x85432000
     addsu   r11, r9, r10
     CHECKEQ r11, 0xffffffff
 

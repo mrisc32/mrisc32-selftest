@@ -28,8 +28,7 @@
     ; ADDPCHI can copy PC.
     ; We use JL as the second way to query the PC register value.
     jl      pc, #1f@pc          ; This sets LR = PC + 4
-1:
-    addpchi r10, #0             ; This sets R10 = PC
+1:  addpchi r10, #1b+0@pchi     ; This sets R10 = PC
     seq     r10, r10, lr
     CHECKEQ r10, -1
 
@@ -37,8 +36,8 @@
     ; Note: Instruction order and size is critical for the correct
     ; calculation of PC.
     ldi     r11, #0x12345000+4  ; Delta between ADDPCHI insns = +4
-    addpchi r9, #0
-    addpchi r10, #0x12345000
+2:  addpchi r9, #2b+0@pchi
+3:  addpchi r10, #3b+0x12345000@pchi
     add     r9, r9, r11
     seq     r10, r9, r10
     CHECKEQ r10, -1

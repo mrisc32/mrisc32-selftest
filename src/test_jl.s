@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_jl
 
-    addpchi r9, #0
+1:  addpchi r9, #1b+0@pchi
     add     r9, r9, #12
     jl      pc, #right1@pc  ; This should make lr == r9
 
