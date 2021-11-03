@@ -180,6 +180,7 @@ tests:
     .word   test_ebf
     .word   test_ebfu
     .word   test_mkbf
+    .word   test_ibf
     .word   test_shuf
     .word   test_sel
     .word   test_clz
@@ -192,8 +193,16 @@ tests:
     .word   test_packs
     .word   test_packsu
 
+    .word   test_madd
+    .word   test_mul
+    .word   test_mulhi
+    .word   test_mulhiu
     .word   test_mulq
     .word   test_mulqr
+    .word   test_div
+    .word   test_divu
+    .word   test_rem
+    .word   test_remu
 
     .word   test_ldb
     .word   test_ldub
