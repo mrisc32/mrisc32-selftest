@@ -56,7 +56,6 @@ LIBOBJS = \
   $(OUT)/test_bs.o \
   $(OUT)/test_bz.o \
   $(OUT)/test_clz.o \
-  $(OUT)/test_cpuid.o \
   $(OUT)/test_div.o \
   $(OUT)/test_divu.o \
   $(OUT)/test_ebf.o \
@@ -113,6 +112,7 @@ LIBOBJS = \
   $(OUT)/test_subhur.o \
   $(OUT)/test_subs.o \
   $(OUT)/test_subsu.o \
+  $(OUT)/test_xchgsr.o \
   $(OUT)/test_xor.o
 
 RUNTESTS = $(OUT)/runtests

@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_subsu
 
-    NOSA    no_saturating_ops
+    NOSM    no_saturating_ops
 
     ; Unsaturated should be the same as sub.
     ldi     r9, #9926
@@ -40,7 +40,7 @@
     CHECKEQ r11, 0x00000000
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ; Packed half-word.
     ldi     r9,  #0x7123f471

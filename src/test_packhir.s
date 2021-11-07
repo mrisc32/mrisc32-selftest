@@ -25,8 +25,8 @@
 
     BEGIN_TEST  test_packhir
 
-    NOPO        no_packed_ops
-    NOSA        no_saturating_ops
+    NOPM        no_packed_ops
+    NOSM        no_saturating_ops
 
     ldi         r9,  #0x87ff8f97
     ldi         r10, #0x1f34567f

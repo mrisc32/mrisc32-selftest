@@ -25,8 +25,8 @@
 
     BEGIN_TEST  test_packs
 
-    NOPO    no_packed_ops
-    NOSA    no_saturating_ops
+    NOPM    no_packed_ops
+    NOSM    no_saturating_ops
 
     ldi     r9,  #0x87654321
     ldi     r10, #0x00005678

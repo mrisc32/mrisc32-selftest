@@ -71,52 +71,27 @@
     and     r26, r26, r1
 .endm
 
-.macro  NOVEC skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #1      ; VEC (vector operations)?
+.macro  NOVM skiplabel:req
+    getsr   r1, #0
+    and     r1, r1, #1      ; VM (vector operations)?
     bz      r1, \skiplabel
 .endm
 
-.macro  NOPO skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #2      ; PO (packed operations)?
+.macro  NOPM skiplabel:req
+    getsr   r1, #0
+    and     r1, r1, #2      ; PM (packed operations)?
     bz      r1, \skiplabel
 .endm
 
-.macro  NOMUL skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #4      ; MUL (multiply operations)?
+.macro  NOFM skiplabel:req
+    getsr   r1, #0
+    and     r1, r1, #4      ; FM (floating-point operations)?
     bz      r1, \skiplabel
 .endm
 
-.macro  NODIV skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #8      ; DIV (division operations)?
-    bz      r1, \skiplabel
-.endm
-
-.macro  NOSA skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #16     ; SA (saturating operations)?
-    bz      r1, \skiplabel
-.endm
-
-.macro  NOFP skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #32     ; FP (floating point operations)?
-    bz      r1, \skiplabel
-.endm
-
-.macro  NOSQRT skiplabel:req
-    ldi     r1, #1
-    cpuid   r1, r1, z
-    and     r1, r1, #64     ; SQRT?
+.macro  NOSM skiplabel:req
+    getsr   r1, #0
+    and     r1, r1, #8      ; SM (saturating operations)?
     bz      r1, \skiplabel
 .endm
 

@@ -42,7 +42,7 @@
     CHECKEQ r10, 6
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ; r9 = 0x08153000
     popcnt.h r10, r9

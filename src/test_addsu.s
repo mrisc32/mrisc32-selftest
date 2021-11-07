@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_addsu
 
-    NOSA    no_saturating_ops
+    NOSM    no_saturating_ops
 
     ; Unsaturated should be the same as add.
     ldi     r9, #1367
@@ -40,7 +40,7 @@
     CHECKEQ r11, 0xffffffff
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ; Packed half-word.
     ldi     r9,  #0x12348471

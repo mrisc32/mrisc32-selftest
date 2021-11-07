@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_fadd
 
-    NOFP    no_fpu
+    NOFM    no_fpu
 
     ldi     r9,  #0x3f800000    ; 1.0
     ldi     r10, #0x3f800000    ; 1.0
@@ -73,7 +73,7 @@
     CHECKNAN r11                ; NaN
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ; TODO(m): Add packed operations tests!
 

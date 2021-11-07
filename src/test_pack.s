@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_pack
 
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ldi     r9,  #0x87654321
     ldi     r10, #0x12345678

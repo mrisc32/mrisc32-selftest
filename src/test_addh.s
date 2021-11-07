@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_addh
 
-    NOSA    no_saturating_ops
+    NOSM    no_saturating_ops
 
     ; No rounding.
     ldi     r9,  #0x7fffffff
@@ -40,7 +40,7 @@
     CHECKEQ r11, 0
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ; Packed half-word.
     ldi     r9,  #0x71238471

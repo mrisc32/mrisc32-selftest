@@ -25,7 +25,7 @@
 
     BEGIN_TEST  test_packhi
 
-    NOPO        no_packed_ops
+    NOPM        no_packed_ops
 
     ldi         r9,  #0x87ff8f97
     ldi         r10, #0x1f34567f

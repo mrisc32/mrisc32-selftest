@@ -47,7 +47,7 @@
     CHECKEQ r11, 123456
 
     ; Can we do packed operations?
-    NOPO    no_packed_ops
+    NOPM    no_packed_ops
 
     ldi     r9,  #0x12f4a607
     ldi     r10, #0x11125698

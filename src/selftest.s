@@ -161,7 +161,7 @@ selftest_epilogue:
 
     .p2align 2
 tests:
-    .word   test_cpuid
+    .word   test_xchgsr
     .word   test_or
     .word   test_and
     .word   test_xor
