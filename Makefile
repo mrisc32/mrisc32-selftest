@@ -32,7 +32,6 @@ CC      = mrisc32-elf-gcc
 CFLAGS  = -c -O2 -W -Wall -I src
 LD      = mrisc32-elf-gcc
 LDFLAGS = -L$(OUT) -msim
-OBJCOPY = mrisc32-elf-objcopy
 
 LIBSELFTEST = $(OUT)/libselftest.a
 
@@ -115,7 +114,7 @@ LIBOBJS = \
   $(OUT)/test_xchgsr.o \
   $(OUT)/test_xor.o
 
-RUNTESTS = $(OUT)/runtests
+RUNTESTS = $(OUT)/runtests.elf
 
 RUNTESTSOBJS = \
   $(OUT)/runtests.o
@@ -136,10 +135,7 @@ $(OUT)/selftest.o: src/selftest.s
 $(OUT)/test_%.o: src/test_%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(RUNTESTS): $(OUT)/runtests.elf
-	$(OBJCOPY) -O binary $< $@
-
-$(OUT)/runtests.elf: $(RUNTESTSOBJS) $(LIBSELFTEST)
+$(RUNTESTS): $(RUNTESTSOBJS) $(LIBSELFTEST)
 	$(LD) $(LDFLAGS) -o $@ $(RUNTESTSOBJS) -lselftest
 
 $(OUT)/runtests.o: src/runtests.c
