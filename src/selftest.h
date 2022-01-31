@@ -24,6 +24,10 @@
 #ifndef SELFTEST_H_
 #define SELFTEST_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /// @brief Callback function prototype.
 /// @param pass Whether or not the test passed (0 = fail)
 /// @param test_no The number of the test that passed/failed
@@ -35,6 +39,10 @@ typedef void (*test_result_fun_t)(int pass, int test_no);
 /// @param test_result_fun The test callback function.
 /// @returns a non-zero number if all tests passed.
 int selftest_run(test_result_fun_t test_result_fun);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  // SELFTEST_H_
 
