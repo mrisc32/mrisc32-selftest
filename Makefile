@@ -28,10 +28,11 @@ ASFLAGS = -c -I src
 AR      = mrisc32-elf-ar
 ARFLAGS = crs
 
-CC      = mrisc32-elf-gcc
-CFLAGS  = -c -O2 -W -Wall -I src
-LD      = mrisc32-elf-gcc
-LDFLAGS = -L$(OUT) -msim
+CC         = mrisc32-elf-gcc
+CFLAGS     = -c -O2 -W -Wall -I src
+LD         = mrisc32-elf-gcc
+LDFLAGS    = -L$(OUT) -msim
+LDFLAGS_TB = -L$(OUT) -mno-ctor-dtor
 
 LIBSELFTEST = $(OUT)/libselftest.a
 
@@ -115,13 +116,17 @@ LIBOBJS = \
   $(OUT)/test_xor.o
 
 RUNTESTS = $(OUT)/runtests.elf
-
 RUNTESTSOBJS = \
   $(OUT)/runtests.o
 
+RUNTESTS_TB = $(OUT)/runtests_tb.elf
+RUNTESTS_TBOBJS = \
+  $(OUT)/runtests_tb.o
+
+
 .PHONY: all clean
 
-all: $(LIBSELFTEST) $(RUNTESTS)
+all: $(LIBSELFTEST) $(RUNTESTS) $(RUNTESTS_TB)
 
 clean:
 	rm -rf $(OUT)/*
@@ -135,9 +140,15 @@ $(OUT)/selftest.o: src/selftest.s
 $(OUT)/test_%.o: src/test_%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
+$(OUT)/runtests.o: src/runtests.c
+	$(CC) $(CFLAGS) -o $@ $<
+
 $(RUNTESTS): $(RUNTESTSOBJS) $(LIBSELFTEST)
 	$(LD) $(LDFLAGS) -o $@ $(RUNTESTSOBJS) -lselftest
 
-$(OUT)/runtests.o: src/runtests.c
+$(OUT)/runtests_tb.o: src/runtests_tb.c
 	$(CC) $(CFLAGS) -o $@ $<
+
+$(RUNTESTS_TB): $(RUNTESTS_TBOBJS) $(LIBSELFTEST)
+	$(LD) $(LDFLAGS_TB) -o $@ $(RUNTESTS_TBOBJS) -lselftest
 
