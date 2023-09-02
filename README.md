@@ -1,3 +1,5 @@
+## This repo has moved to: https://gitlab.com/mrisc32/mrisc32-selftest
+
 # MRISC32 selftest suite
 
 This is a suite of micro tests in the form of small programs (usually written in assembler) that checks the behaviour of program execution against the MRISC32 ISA specification.
